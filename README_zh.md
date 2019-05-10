@@ -2,6 +2,10 @@
 
 **\*\*\*\*\* 2019年2月7日:TfHub模块 \*\*\*\*\***
 
+BERT has been uploaded to [TensorFlow Hub](https://tfhub.dev). See
+`run_classifier_with_tfhub.py` for an example of how to use the TF Hub module, 
+or run an example in the browser on [Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb).
+
 BERT已经被上传到 [TensorFlow Hub](https://tfhub.dev). 看
 `run_classifier_with_tfhub.py` 例如，如何使用TF Hub模块， 
 或用浏览器[Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb)上运行一个示例.
@@ -9,7 +13,15 @@ BERT已经被上传到 [TensorFlow Hub](https://tfhub.dev). 看
 **\*\*\*\*\* 2018年11月23日: Un-normalized multilingual model(未规范化语言模型) + Thai(泰语) +
 Mongolian(蒙古语) \*\*\*\*\***
 
-我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，此外还包括泰语和蒙古语。
+We uploaded a new multilingual model which does *not* perform any normalization
+on the input (no lower casing, accent stripping, or Unicode normalization), and
+additionally inclues Thai and Mongolian.
+
+我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，
+此外还包括泰语和蒙古语。
+
+**It is recommended to use this version for developing multilingual models,
+especially on languages with non-Latin alphabets.**
 
 **建议使用此版本开发多语言模型，特别是在非拉丁字母的语言上。**
 
@@ -24,15 +36,30 @@ This does not require any code changes, and can be downloaded here:
 
 **\*\*\*\*\* 2018年11月15日: SOTA SQuAD 2.0 System \*\*\*\*\***
 
-我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。有关详情，请参阅辩论席的小队2.0部分。
+We released code changes to reproduce our 83% F1 SQuAD 2.0 system, which is
+currently 1st place on the leaderboard by 3%. See the SQuAD 2.0 section of the
+README for details.
+
+我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。
+有关详情，请参阅辩论席的小队2.0部分。
 
 **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
 BERT available \*\*\*\*\***
 
-来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，能够重现我们的结果。
-[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)
+NLP researchers from HuggingFace made a
+[PyTorch version of BERT available](https://github.com/huggingface/pytorch-pretrained-BERT)
+which is compatible with our pre-trained checkpoints and is able to reproduce
+our results. Sosuke Kobayashi also made a
+[Chainer version of BERT available](https://github.com/soskek/bert-chainer)
+(Thanks!) We were not involved in the creation or maintenance of the PyTorch
+implementation so please direct any questions towards the authors of that
+repository.
 
-Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)
+来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，
+能够重现我们的结果。
+[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。
+
+Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
 
 (谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问。
 
@@ -49,21 +76,44 @@ Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/ber
     Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
     简体和繁体，12层，768隐藏层，12头，110M参数
 
+We use character-based tokenization for Chinese, and WordPiece tokenization for
+all other languages. Both models should work out-of-the-box without any code
+changes. We did update the implementation of `BasicTokenizer` in
+`tokenization.py` to support Chinese character tokenization, so please update if
+you forked it. However, we did not change the tokenization API.
+
+For more, see the
+[Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).
+
 我们中文使用的是基于字符的标记，对所有其他语言使用单词tokenization。
 这两种模型都应该解压即用，无需任何代码更改。
-我们在`tokenization.py`中更新了`BasicTokenizer`的实现。支持中文字符化，所以如果你如果fork了请更新。但是，我们没有更改了tokenization化API。
+我们在`tokenization.py`中更新了`BasicTokenizer`的实现。支持中文字符化，
+所以如果你如果fork了请更新。但是，我们没有更改了tokenization化API。
 
-有关更多信息，请参见[多语言README](https://github.com/google-research/bert/blob/master/multilingual.md).
+有关更多信息，请参见
+[多语言README](https://github.com/google-research/bert/blob/master/multilingual.md).
 
 **\*\*\*\*\* End new information \*\*\*\*\***
 
 ## 介绍
 
+**BERT**, or **B**idirectional **E**ncoder **R**epresentations from
+**T**ransformers, is a new method of pre-training language representations which
+obtains state-of-the-art results on a wide array of Natural Language Processing
+(NLP) tasks.
+
 **BERT**, or **B**idirectional **E**ncoder **R**epresentations 来源于
 **T**ransformers, 是一种新的预训练语言表达的方法，是解决自然语言处理(NLP)任务最先进的方法。
 
+Our academic paper which describes BERT in detail and provides full results on a
+number of tasks can be found here:
+
 我们的学术论文对BERT做了详细的描述，并提供了一些任务的结果，可以在这里找到:
 [https://arxiv.org/abs/1810.04805](https://arxiv.org/abs/1810.04805).
+
+To give a few numbers, here are the results on the
+[SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/) question answering
+task:
 
 下面是关于[SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/)的问答任务的一些数字结果:
 
@@ -81,13 +131,21 @@ System                  | MultiNLI | Question NLI | SWAG
 BERT                    | **86.7** | **91.1**     | **86.3**
 OpenAI GPT (Prev. SOTA) | 82.2     | 88.1         | 75.0
 
+Plus many other tasks.
+
 加上许多其他任务。
+
+Moreover, these results were all obtained with almost no task-specific neural
+network architecture design.
 
 而且，这些结果都是在几乎没有针对特定任务的神经网络架构的情况下得到的。
 
-如果你已经知道BERT，现在你只是想开始使用，你可以
-[下载预训练的模型](#pre-trained-models) 和
-[运行最先进的微调模型fine-tuning](#fine-tuning-with-bert) 只需要几分钟。
+If you already know what BERT is and you just want to get started, you can
+[download the pre-trained models](#pre-trained-models) and
+[run a state-of-the-art fine-tuning](#fine-tuning-with-bert) in only a few
+minutes.
+
+如果你已经知道BERT，现在你只是想开始使用，你可以[下载预训练的模型](#pre-trained-models) 和 [运行最先进的微调模型fine-tuning](#fine-tuning-with-bert) 只需要几分钟。
 
 ## 什么是BERT？
 
@@ -97,9 +155,15 @@ Wikipedia), and then use that model for downstream NLP tasks that we care about
 (like question answering). BERT outperforms previous methods because it is the
 first *unsupervised*, *deeply bidirectional* system for pre-training NLP.
 
+BERT是一种预训练的语言表达的方法，这意味着我们在一个大的文本语料库（如维基百科）上训练一个通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。BERT优于以前的方法，因为它是第一个*无监督*、*深度双向*的预训练NLP系统。
+
+
 *Unsupervised* means that BERT was trained using only a plain text corpus, which
 is important because an enormous amount of plain text data is publicly available
 on the web in many languages.
+
+*无监督*意味着BERT只使用纯文本语料库进行训练，这一点很重要，因为大量纯文本数据在网络上以多种语言公开。
+
 
 Pre-trained representations can also either be *context-free* or *contextual*,
 and contextual representations can further be *unidirectional* or
