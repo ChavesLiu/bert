@@ -29,12 +29,12 @@ This does not require any code changes, and can be downloaded here:
 **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
 BERT available \*\*\*\*\***
 
-来自HuggingFace的NLP研究人员做了一个
+来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，能够重现我们的结果。
 [可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)
 
-它与我们预先培训的检查点兼容，并且能够复现我们的研究结果。Sosuke Kobayashi做的
-[Chainer version of BERT available](https://github.com/soskek/bert-chainer)
-(谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问存储库。
+Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)
+
+(谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问。
 
 **\*\*\*\*\* New November 3rd, 2018: Multilingual and Chinese models available
 \*\*\*\*\***
