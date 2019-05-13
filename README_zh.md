@@ -2,7 +2,7 @@
 
 **\*\*\*\*\* 2019年2月7日:TfHub模块 \*\*\*\*\***
 
-BERT has been uploaded to [TensorFlow Hub](https://tfhub.dev). See
+>BERT has been uploaded to [TensorFlow Hub](https://tfhub.dev). See
 `run_classifier_with_tfhub.py` for an example of how to use the TF Hub module, 
 or run an example in the browser on [Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb).
 
@@ -13,30 +13,31 @@ BERT已经被上传到 [TensorFlow Hub](https://tfhub.dev). 看
 **\*\*\*\*\* 2018年11月23日: Un-normalized multilingual model(未规范化语言模型) + Thai(泰语) +
 Mongolian(蒙古语) \*\*\*\*\***
 
-We uploaded a new multilingual model which does *not* perform any normalization
+>We uploaded a new multilingual model which does *not* perform any normalization
 on the input (no lower casing, accent stripping, or Unicode normalization), and
 additionally inclues Thai and Mongolian.
 
 我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，
 此外还包括泰语和蒙古语。
 
-**It is recommended to use this version for developing multilingual models,
+>**It is recommended to use this version for developing multilingual models,
 especially on languages with non-Latin alphabets.**
 
 **建议使用此版本开发多语言模型，特别是在非拉丁字母的语言上。**
 
-This does not require any code changes, and can be downloaded here:
+>This does not require any code changes, and can be downloaded here:
 
 这不需要任何代码更改，可以在此处下载
 
-*   **[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+>*   **[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
     104 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
-    104种语言，12层，768隐藏层，12个头，110m参数
 
+>*   **[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+    104种语言，12层，768隐藏层，12个头，110m参数
 
 **\*\*\*\*\* 2018年11月15日: SOTA SQuAD 2.0 System \*\*\*\*\***
 
-We released code changes to reproduce our 83% F1 SQuAD 2.0 system, which is
+>We released code changes to reproduce our 83% F1 SQuAD 2.0 system, which is
 currently 1st place on the leaderboard by 3%. See the SQuAD 2.0 section of the
 README for details.
 
@@ -46,7 +47,7 @@ README for details.
 **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
 BERT available \*\*\*\*\***
 
-NLP researchers from HuggingFace made a
+>NLP researchers from HuggingFace made a
 [PyTorch version of BERT available](https://github.com/huggingface/pytorch-pretrained-BERT)
 which is compatible with our pre-trained checkpoints and is able to reproduce
 our results. Sosuke Kobayashi also made a
@@ -68,25 +69,29 @@ Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/ber
 
 我们提供了两个BERT模型:
 
-*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+>*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (Not recommended, use `Multilingual Cased` instead)**: 102 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
-    102种语言，12层，768隐藏层，12个头，110m参数
-    
-*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
-    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
-    简体和繁体，12层，768隐藏层，12头，110M参数
 
-We use character-based tokenization for Chinese, and WordPiece tokenization for
+>*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
+    中文简体和繁体，12层，768隐藏层，12头，110M参数
+    
+*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+    (不推荐用 `Multilingual Cased` 加载)**: 102种语言，12层，768隐藏层，12个头，110m参数
+
+*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+    中文简体和繁体，12层，768隐藏层，12头，110M参数
+
+>We use character-based tokenization for Chinese, and WordPiece tokenization for
 all other languages. Both models should work out-of-the-box without any code
 changes. We did update the implementation of `BasicTokenizer` in
 `tokenization.py` to support Chinese character tokenization, so please update if
 you forked it. However, we did not change the tokenization API.
 
-For more, see the
+>For more, see the
 [Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).
 
-我们中文使用的是基于字符的标记，对所有其他语言使用单词tokenization。
-这两种模型都应该解压即用，无需任何代码更改。
+我们中文使用的是基于字符的标记，对所有其他语言使用单词tokenization。这两种模型都应该解压即用，无需任何代码更改。
 我们在`tokenization.py`中更新了`BasicTokenizer`的实现。支持中文字符化，
 所以如果你如果fork了请更新。但是，我们没有更改了tokenization化API。
 
@@ -97,7 +102,7 @@ For more, see the
 
 ## 介绍
 
-**BERT**, or **B**idirectional **E**ncoder **R**epresentations from
+>**BERT**, or **B**idirectional **E**ncoder **R**epresentations from
 **T**ransformers, is a new method of pre-training language representations which
 obtains state-of-the-art results on a wide array of Natural Language Processing
 (NLP) tasks.
@@ -105,13 +110,13 @@ obtains state-of-the-art results on a wide array of Natural Language Processing
 **BERT**, or **B**idirectional **E**ncoder **R**epresentations 来源于
 **T**ransformers, 是一种新的预训练语言表达的方法，是解决自然语言处理(NLP)任务最先进的方法。
 
-Our academic paper which describes BERT in detail and provides full results on a
+>Our academic paper which describes BERT in detail and provides full results on a
 number of tasks can be found here:
 
 我们的学术论文对BERT做了详细的描述，并提供了一些任务的结果，可以在这里找到:
 [https://arxiv.org/abs/1810.04805](https://arxiv.org/abs/1810.04805).
 
-To give a few numbers, here are the results on the
+>To give a few numbers, here are the results on the
 [SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/) question answering
 task:
 
@@ -131,41 +136,43 @@ System                  | MultiNLI | Question NLI | SWAG
 BERT                    | **86.7** | **91.1**     | **86.3**
 OpenAI GPT (Prev. SOTA) | 82.2     | 88.1         | 75.0
 
-Plus many other tasks.
+>Plus many other tasks.
 
 加上许多其他任务。
 
-Moreover, these results were all obtained with almost no task-specific neural
+>Moreover, these results were all obtained with almost no task-specific neural
 network architecture design.
 
 而且，这些结果都是在几乎没有针对特定任务的神经网络架构的情况下得到的。
 
-If you already know what BERT is and you just want to get started, you can
+>If you already know what BERT is and you just want to get started, you can
 [download the pre-trained models](#pre-trained-models) and
 [run a state-of-the-art fine-tuning](#fine-tuning-with-bert) in only a few
 minutes.
 
-如果你已经知道BERT，现在你只是想开始使用，你可以[下载预训练的模型](#pre-trained-models) 和 [运行最先进的微调模型fine-tuning](#fine-tuning-with-bert) 只需要几分钟。
+如果你已经知道BERT，现在你只是想开始使用，你可以[下载预训练的模型](#pre-trained-models) 
+和 [运行最先进的微调模型fine-tuning](#fine-tuning-with-bert) 只需要几分钟。
 
 ## 什么是BERT？
 
-BERT is a method of pre-training language representations, meaning that we train
+>BERT is a method of pre-training language representations, meaning that we train
 a general-purpose "language understanding" model on a large text corpus (like
 Wikipedia), and then use that model for downstream NLP tasks that we care about
 (like question answering). BERT outperforms previous methods because it is the
 first *unsupervised*, *deeply bidirectional* system for pre-training NLP.
 
-BERT是一种预训练的语言表达的方法，这意味着我们在一个大的文本语料库（如维基百科）上训练一个通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。BERT优于以前的方法，因为它是第一个*无监督*、*深度双向*的预训练NLP系统。
+BERT是一种预训练的语言表达的方法，这意味着我们在一个大的文本语料库（如维基百科）上训练一个通用
+的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。BERT优于以前的方法，因为它
+是第一个*无监督*、*深度双向*的预训练NLP系统。
 
-
-*Unsupervised* means that BERT was trained using only a plain text corpus, which
+>*Unsupervised* means that BERT was trained using only a plain text corpus, which
 is important because an enormous amount of plain text data is publicly available
 on the web in many languages.
 
-*无监督*意味着BERT只使用纯文本语料库进行训练，这一点很重要，因为大量纯文本数据在网络上以多种语言公开。
+*无监督*意味着BERT只使用纯文本语料库进行训练，这一点很重要，因为大量纯文本数据在网络上以多种语
+言公开。
 
-
-Pre-trained representations can also either be *context-free* or *contextual*,
+>Pre-trained representations can also either be *context-free* or *contextual*,
 and contextual representations can further be *unidirectional* or
 *bidirectional*. Context-free models such as
 [word2vec](https://www.tensorflow.org/tutorials/representation/word2vec) or
@@ -175,7 +182,14 @@ the same representation in `bank deposit` and `river bank`. Contextual models
 instead generate a representation of each word that is based on the other words
 in the sentence.
 
-BERT was built upon recent work in pre-training contextual representations —
+预训练的表示方法可以是*上下文无关的*或者是*上下文相关的*，上下文表示还可以是*单向的*或
+*双向的*。上下文无关的模型，例如:
+[word2vec](https://www.tensorflow.org/tutorials/representation/word2vec) 或者
+[GloVe](https://nlp.stanford.edu/projects/glove/)
+为词汇表中的每个单词生成一个单独的`word embedded`来表示，这样`bank`在`bank deposit`
+和`river bank`中将具有相同的表示。上下文模型生成基于句子中其他单词的每个单词的表示。
+
+>BERT was built upon recent work in pre-training contextual representations —
 including [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432),
 [Generative Pre-Training](https://blog.openai.com/language-unsupervised/),
 [ELMo](https://allennlp.org/elmo), and
@@ -190,20 +204,40 @@ represents "bank" using both its left and right context — `I made a ... deposi
 — starting from the very bottom of a deep neural network, so it is *deeply
 bidirectional*.
 
-BERT uses a simple approach for this: We mask out 15% of the words in the input,
+BERT是建立在预训练包括上下文表示
+[Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432),
+[生成预训练](https://blog.openai.com/language-unsupervised/),
+[ELMo](https://allennlp.org/elmo),
+[ULMFit](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html),
+但至关重要的是，这些模型都是“单向的”或“浅双向的”。
+这意味着每个单词只使用其左边(或右边)的单词进行上下文化。
+例如：在`I made a bank deposit`这句话中，`bank`的单向表示仅基于`I made a`，
+而不是`deposit`。以前的一些工作确实结合了来自单独的左上下文和右上下文模型的表示，
+但只是以一种`浅`的方式。BERT用`bank`的左右上下文来表示`bank`,
+`I made a ... deposit` — 从一个深度神经网络的最底部开始，所以它是`深度双向的`;
+
+
+>BERT uses a simple approach for this: We mask out 15% of the words in the input,
 run the entire sequence through a deep bidirectional
 [Transformer](https://arxiv.org/abs/1706.03762) encoder, and then predict only
 the masked words. For example:
+
+BERT用了一种简单的方法:我们屏蔽掉输入中的15%的单词，通过深层双向
+[Transformer](https://arxiv.org/abs/1706.03762)的编码器，
+然后仅仅预测屏蔽掉的词，例如：
 
 ```
 Input: the man went to the [MASK1] . he bought a [MASK2] of milk.
 Labels: [MASK1] = store; [MASK2] = gallon
 ```
 
-In order to learn relationships between sentences, we also train on a simple
+>In order to learn relationships between sentences, we also train on a simple
 task which can be generated from any monolingual corpus: Given two sentences `A`
 and `B`, is `B` the actual next sentence that comes after `A`, or just a random
 sentence from the corpus?
+
+为了学习句子之间的关系，我们还训练了一个简单的任务，这个任务可以从任何单语语料库生成:给定两个
+句子`A`和`B`，`B`是在`A`之后的下一个句子，或是语料库中的一个随机句子?
 
 ```
 Sentence A: the man went to the store .
@@ -217,47 +251,74 @@ Sentence B: penguins are flightless .
 Label: NotNextSentence
 ```
 
-We then train a large model (12-layer to 24-layer Transformer) on a large corpus
+>We then train a large model (12-layer to 24-layer Transformer) on a large corpus
 (Wikipedia + [BookCorpus](http://yknzhu.wixsite.com/mbweb)) for a long time (1M
 update steps), and that's BERT.
 
-Using BERT has two stages: *Pre-training* and *fine-tuning*.
+我们用BERT在一个大的训练语料(Wikipedia + [BookCorpus](http://yknzhu.wixsite.com/mbweb))，
+训练了一个大模型(12层到24层Transformer)；花费了很长的时间（更新了一百万个迭代的参数）
 
-**Pre-training** is fairly expensive (four days on 4 to 16 Cloud TPUs), but is a
+>Using BERT has two stages: *Pre-training* and *fine-tuning*.
+
+用BERT有两步：*预训练*和*微调*
+
+>**Pre-training** is fairly expensive (four days on 4 to 16 Cloud TPUs), but is a
 one-time procedure for each language (current models are English-only, but
 multilingual models will be released in the near future). We are releasing a
 number of pre-trained models from the paper which were pre-trained at Google.
 Most NLP researchers will never need to pre-train their own model from scratch.
 
-**Fine-tuning** is inexpensive. All of the results in the paper can be
+**预训练** 是相当高成本的(使用4到16个云TPU用了4天),但是对于每种语言都是一次性的过程(目前的模型只使用英语，
+但是多语言模型将在不久的将来发布)
+
+>**Fine-tuning** is inexpensive. All of the results in the paper can be
 replicated in at most 1 hour on a single Cloud TPU, or a few hours on a GPU,
 starting from the exact same pre-trained model. SQuAD, for example, can be
 trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of
 91.0%, which is the single system state-of-the-art.
 
-The other important aspect of BERT is that it can be adapted to many types of
+**微调** 是成本低的方案。本文的所有结果，只需要单个云TPU运行最多1小时可以得到；从相同的预训练模型开始，
+例如，SQuAD在单个TPU进行30分钟左右的训练，使Dev F1分数可达91.0%，这是目前单系统最优的水平；
+
+>The other important aspect of BERT is that it can be adapted to many types of
 NLP tasks very easily. In the paper, we demonstrate state-of-the-art results on
 sentence-level (e.g., SST-2), sentence-pair-level (e.g., MultiNLI), word-level
 (e.g., NER), and span-level (e.g., SQuAD) tasks with almost no task-specific
 modifications.
 
-## What has been released in this repository?
+BERT的另一个重要方面是它可以很容易地适应许多类型的NLP任务。在paper中，我们展示了在几乎没有针
+对特定任务修改的情况下，句子级(例如，SST-2)、
+句子对级(例如,自然语言推理，MultiNLI,*Multi* *N*atural *L*anguage *I*nference，
+数据：[Multi-Genre NLI Corpus](https://www.nyu.edu/projects/bowman/multinli/))、
+单词级(例如，NER实体识别)和
+Span-level(例如，SQuAD阅读理解)任务；
 
-We are releasing the following:
+>## What has been released in this repository?
 
-*   TensorFlow code for the BERT model architecture (which is mostly a standard
+##这个存储库中发布了什么?
+
+>We are releasing the following:
+>*   TensorFlow code for the BERT model architecture (which is mostly a standard
     [Transformer](https://arxiv.org/abs/1706.03762) architecture).
-*   Pre-trained checkpoints for both the lowercase and cased version of
-    `BERT-Base` and `BERT-Large` from the paper.
-*   TensorFlow code for push-button replication of the most important
+>*   Pre-trained checkpoints for both the lowercase and cased version of
+    `BERT-Base` and `BERT-Large` from the paper.   
+>*   TensorFlow code for push-button replication of the most important
     fine-tuning experiments from the paper, including SQuAD, MultiNLI, and MRPC.
 
-All of the code in this repository works out-of-the-box with CPU, GPU, and Cloud
+我们发布了以下内容:
+* BERT模型架构的TensorFlow代码(主要是一个标准[Transformer](https://arxiv.org/abs/1706.03762)体系结构)。
+* 预训练的checkpoints的小写和大小写版本:`BERT-Base`和`BERT-Large`。
+* TensorFlow代码本文中最重要的微调实验包括SQuAD、MultiNLI和MRPC.
+
+>All of the code in this repository works out-of-the-box with CPU, GPU, and Cloud
 TPU.
 
-## Pre-trained models
+本代码库中的所有代码都可以在CPU、GPU和云TPU上直接解压运行。
 
-We are releasing the `BERT-Base` and `BERT-Large` models from the paper.
+>## Pre-trained models
+## 预训练模型
+
+>We are releasing the `BERT-Base` and `BERT-Large` models from the paper.
 `Uncased` means that the text has been lowercased before WordPiece tokenization,
 e.g., `John Smith` becomes `john smith`. The `Uncased` model also strips out any
 accent markers. `Cased` means that the true case and accent markers are
@@ -265,46 +326,89 @@ preserved. Typically, the `Uncased` model is better unless you know that case
 information is important for your task (e.g., Named Entity Recognition or
 Part-of-Speech tagging).
 
-These models are all released under the same license as the source code (Apache
+我们在paper中发布了`BERT-Base`和`BERT-Large`模型。`Uncased`表示在单词符号化之前文本已经小写，
+例如，`John Smith`变成了`john smith`。
+`Uncased`模型也去掉了任何口音标记。`Cased`表示保留了混合真实的大小写和重音符号
+通常，除非您知道这种情况的信息对于您的任务非常重要，否则`Uncased`模型更好，(例如，命名实体识别或词性标注)。
+
+>These models are all released under the same license as the source code (Apache
 2.0).
 
-For information about the Multilingual and Chinese model, see the
+这些模型都是在与源代码(Apache 2.0)相同的许可下发布的。
+
+>For information about the Multilingual and Chinese model, see the
 [Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).
 
-**When using a cased model, make sure to pass `--do_lower=False` to the training
+有关多语言和中文模型的信息，请参见
+[Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).
+
+>**When using a cased model, make sure to pass `--do_lower=False` to the training
 scripts. (Or pass `do_lower_case=False` directly to `FullTokenizer` if you're
 using your own script.)**
 
-The links to the models are here (right-click, 'Save link as...' on the name):
+**使用大小写混合模型时，请确保将`——do_lower=False`传递给训练脚本。(如果使用自己的脚本，则直接
+将`do_lower_case=False`传递给`FullTokenizer`)**
 
-*   **[`BERT-Base, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip)**:
+>The links to the models are here (right-click, 'Save link as...' on the name):
+
+模型的链接见下(右键单击链接，'链接存储为...'):
+
+>*   **[`BERT-Base, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip)**:
     12-layer, 768-hidden, 12-heads, 110M parameters
-*   **[`BERT-Large, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip)**:
+>*   **[`BERT-Large, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip)**:
     24-layer, 1024-hidden, 16-heads, 340M parameters
-*   **[`BERT-Base, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip)**:
+>*   **[`BERT-Base, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip)**:
     12-layer, 768-hidden, 12-heads , 110M parameters
-*   **[`BERT-Large, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-24_H-1024_A-16.zip)**:
+>*   **[`BERT-Large, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-24_H-1024_A-16.zip)**:
     24-layer, 1024-hidden, 16-heads, 340M parameters
-*   **[`BERT-Base, Multilingual Cased (New, recommended)`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+>*   **[`BERT-Base, Multilingual Cased (New, recommended)`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
     104 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
-*   **[`BERT-Base, Multilingual Uncased (Orig, not recommended)`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+>*   **[`BERT-Base, Multilingual Uncased (Orig, not recommended)`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (Not recommended, use `Multilingual Cased` instead)**: 102 languages,
     12-layer, 768-hidden, 12-heads, 110M parameters
-*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+>*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
     Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M
-    parameters
 
-Each .zip file contains three items:
 
-*   A TensorFlow checkpoint (`bert_model.ckpt`) containing the pre-trained
+*   **[`BERT-Base, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip)**:
+    12层layer,768个隐藏层,12个头,110M参数;
+    
+*   **[`BERT-Large, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip)**:
+    24层layer,1024个隐藏层,16个头,340M参数;
+
+*   **[`BERT-Base, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip)**:
+    12层layer,768个隐藏层,12个头,110M参数;
+
+*   **[`BERT-Large, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-24_H-1024_A-16.zip)**:
+    24层layer,1024个隐藏层,16个头,340M参数;
+    
+*   **[`BERT-Base, Multilingual Cased (New, recommended)`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+    104种语言,12层layer,768个隐藏层,12个头,110M参数;
+    
+*   **[`BERT-Base, Multilingual Uncased (Orig, not recommended)`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+    不推荐使用`Multilingual Cased`:102种语言,12层layer,768个隐藏层,12个头,110M参数;
+
+*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+    简体繁体，12层，768隐藏，12头，110M参数
+
+>Each .zip file contains three items:
+>*   A TensorFlow checkpoint (`bert_model.ckpt`) containing the pre-trained
     weights (which is actually 3 files).
-*   A vocab file (`vocab.txt`) to map WordPiece to word id.
-*   A config file (`bert_config.json`) which specifies the hyperparameters of
+>*   A vocab file (`vocab.txt`) to map WordPiece to word id.
+>*   A config file (`bert_config.json`) which specifies the hyperparameters of
     the model.
+    
+每个.zip文件包含三个项目：
 
-## Fine-tuning with BERT
+*   一个TensorFlow 模型checkpoint检查点文件(`bert_model.ckpt`)，包含预训练的参数(实际上是3个文件)。
+*   一个词典文件(`vocab.txt`)，将词映射为词id。
+*   一个配置文件(`bert_config.json`)，它指定模型的超参数。
 
-**Important**: All results on the paper were fine-tuned on a single Cloud TPU,
+
+>## Fine-tuning with BERT
+##关于BERT微调
+
+>**Important**: All results on the paper were fine-tuned on a single Cloud TPU,
 which has 64GB of RAM. It is currently not possible to re-produce most of the
 `BERT-Large` results on the paper using a GPU with 12GB - 16GB of RAM, because
 the maximum batch size that can fit in memory is too small. We are working on
@@ -312,14 +416,25 @@ adding code to this repository which allows for much larger effective batch size
 on the GPU. See the section on [out-of-memory issues](#out-of-memory-issues) for
 more details.
 
-This code was tested with TensorFlow 1.11.0. It was tested with Python2 and
+**重点**:本文的所有结果均在单个云TPU上进行的微调,具备64GB的内存.目前不可能再生产大部分的
+`BERT-Large`的结果，在本文中使用的GPU在12GB~16GB的内存，所以使用可以装入内存的最大的bath
+进行处理，我们正在努力将代码添加到这个代码库中，这样可以在GPU上实现更大的有效批处理大小。有
+关详情请参见[内存不足问题](#out-of-memory-issues)一节。
+
+>This code was tested with TensorFlow 1.11.0. It was tested with Python2 and
 Python3 (but more thoroughly with Python2, since this is what's used internally
 in Google).
 
-The fine-tuning examples which use `BERT-Base` should be able to run on a GPU
+这段代码是用TensorFlow 1.11.0测试的。用Python2和Python3(但是完全适配的是Python2，因为
+这是谷歌内部使用的版本)。
+
+>The fine-tuning examples which use `BERT-Base` should be able to run on a GPU
 that has at least 12GB of RAM using the hyperparameters given.
 
-### Fine-tuning with Cloud TPUs
+使用`BERT-Base`的微调示例应该能够在使用给定超参数的GPU上运行，GPU至少有12GB的RAM。
+
+>### Fine-tuning with Cloud TPUs
+### 云TPU微调
 
 Most of the examples below assumes that you will be running training/evaluation
 on your local machine, using a GPU like a Titan X or GTX 1080.
