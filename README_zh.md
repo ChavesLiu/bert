@@ -75,7 +75,7 @@ Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/ber
 >*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
     Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
     中文简体和繁体，12层，768隐藏层，12头，110M参数
-    
+
 *   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (不推荐用 `Multilingual Cased` 加载)**: 102种语言，12层，768隐藏层，12个头，110m参数
 
@@ -295,7 +295,7 @@ Span-level(例如，SQuAD阅读理解)任务；
 
 >## What has been released in this repository?
 
-##这个存储库中发布了什么?
+## 这个存储库中发布了什么?
 
 >We are releasing the following:
 >*   TensorFlow code for the BERT model architecture (which is mostly a standard
@@ -397,7 +397,7 @@ using your own script.)**
 >*   A vocab file (`vocab.txt`) to map WordPiece to word id.
 >*   A config file (`bert_config.json`) which specifies the hyperparameters of
     the model.
-    
+
 每个.zip文件包含三个项目：
 
 *   一个TensorFlow 模型checkpoint检查点文件(`bert_model.ckpt`)，包含预训练的参数(实际上是3个文件)。
@@ -406,7 +406,7 @@ using your own script.)**
 
 
 >## Fine-tuning with BERT
-##关于BERT微调
+## 关于BERT微调
 
 >**Important**: All results on the paper were fine-tuned on a single Cloud TPU,
 which has 64GB of RAM. It is currently not possible to re-produce most of the
@@ -436,48 +436,72 @@ that has at least 12GB of RAM using the hyperparameters given.
 >### Fine-tuning with Cloud TPUs
 ### 云TPU微调
 
-Most of the examples below assumes that you will be running training/evaluation
+>Most of the examples below assumes that you will be running training/evaluation
 on your local machine, using a GPU like a Titan X or GTX 1080.
 
-However, if you have access to a Cloud TPU that you want to train on, just add
+假设你用像Titan X或GTX 1080这样GPU的本地计算机，可直接训练和评估下面这些例子。
+
+>However, if you have access to a Cloud TPU that you want to train on, just add
 the following flags to `run_classifier.py` or `run_squad.py`:
+
+但是，如果您想要训练他，使用云TPU，只需将以下参数添加到`run_classifier.py`或`run_squad.py`;
 
 ```
   --use_tpu=True \
   --tpu_name=$TPU_NAME
 ```
 
-Please see the
+>Please see the
 [Google Cloud TPU tutorial](https://cloud.google.com/tpu/docs/tutorials/mnist)
 for how to use Cloud TPUs. Alternatively, you can use the Google Colab notebook
 "[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
 
-On Cloud TPUs, the pretrained model and the output directory will need to be on
+请看[Google Cloud TPU tutorial](https://cloud.google.com/tpu/docs/tutorials/mnist)
+了解如何使用云计算TPUs。或者，您可以使用谷歌Colab笔记本
+"[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
+
+>On Cloud TPUs, the pretrained model and the output directory will need to be on
 Google Cloud Storage. For example, if you have a bucket named `some_bucket`, you
 might use the following flags instead:
+
+使用云TPUs，使用谷歌云存储预训练模型要输出文件夹参数，例如，你有一个bucket叫`some_bucket`,
+您可以使用以下标志代替:
 
 ```
   --output_dir=gs://some_bucket/my_output_dir/
 ```
 
-The unzipped pre-trained model files can also be found in the Google Cloud
+>The unzipped pre-trained model files can also be found in the Google Cloud
 Storage folder `gs://bert_models/2018_10_18`. For example:
+
+未解压的预训练模型文件，能够在谷歌云中找到存储文件夹`gs://bert_models/2018_10_18`。例如:
 
 ```
 export BERT_BASE_DIR=gs://bert_models/2018_10_18/uncased_L-12_H-768_A-12
 ```
 
-### Sentence (and sentence-pair) classification tasks
+>### Sentence (and sentence-pair) classification tasks
+### 句子(和句子对)分类任务
 
-Before running this example you must download the
+
+>Before running this example you must download the
 [GLUE data](https://gluebenchmark.com/tasks) by running
 [this script](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)
 and unpack it to some directory `$GLUE_DIR`. Next, download the `BERT-Base`
 checkpoint and unzip it to some directory `$BERT_BASE_DIR`.
 
-This example code fine-tunes `BERT-Base` on the Microsoft Research Paraphrase
+在运行此示例
+[这个脚本](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)
+之前，必须下载
+[GLUE data](https://gluebenchmark.com/tasks)
+解压到某个目录`$GLUE_DIR`。接下来，下载`BERT-Base`检查点，并将其解压缩到某个目录`$BERT_BASE_DIR`。
+
+>This example code fine-tunes `BERT-Base` on the Microsoft Research Paraphrase
 Corpus (MRPC) corpus, which only contains 3,600 examples and can fine-tune in a
 few minutes on most GPUs.
+
+这个示例代码基于微软研究释义语料库(Microsoft Research ase Corpus, MRPC)对`BERT-Base`进行了微调，
+该语料库只包含3600个示例，在大多数gpu上只需几分钟就可以进行微调。
 
 ```shell
 export BERT_BASE_DIR=/path/to/bert/uncased_L-12_H-768_A-12
@@ -498,7 +522,9 @@ python run_classifier.py \
   --output_dir=/tmp/mrpc_output/
 ```
 
-You should see output like this:
+>You should see output like this:
+
+您应该看到这样的输出:
 
 ```
 ***** Eval results *****
@@ -508,25 +534,41 @@ You should see output like this:
   loss = 0.505248
 ```
 
-This means that the Dev set accuracy was 84.55%. Small sets like MRPC have a
+>This means that the Dev set accuracy was 84.55%. Small sets like MRPC have a
 high variance in the Dev set accuracy, even when starting from the same
 pre-training checkpoint. If you re-run multiple times (making sure to point to
 different `output_dir`), you should see results between 84% and 88%.
 
-A few other pre-trained models are implemented off-the-shelf in
+这意味着开发集的准确率为84.55%。像MRPC这样的小集合在开发集精度上有很大的差异，即使是从相同
+的训练前检查点开始时也是如此。如果您多次重新运行(确保指向不同的`output_dir`)，您应该会看到
+84%到88%之间的结果。
+
+>A few other pre-trained models are implemented off-the-shelf in
 `run_classifier.py`, so it should be straightforward to follow those examples to
 use BERT for any single-sentence or sentence-pair classification task.
 
-Note: You might see a message `Running train on CPU`. This really just means
+在`run_classifier.py`中还实现了其他一些预先训练的模型。因此，遵循这些示例使用BERT进行任何
+单句或句子对分类任务应该是很简单的。
+
+>Note: You might see a message `Running train on CPU`. This really just means
 that it's running on something other than a Cloud TPU, which includes a GPU.
 
-#### Prediction from classifier
+注意:您可能会看到一条消息`正在CPU上训练`。这实际上只是意味着它运行在云TPU(包括GPU)之外的其
+他东西上。
+
+>#### Prediction from classifier
+
+#### 从分类器预测
 
 Once you have trained your classifier you can use it in inference mode by using
 the --do_predict=true command. You need to have a file named test.tsv in the
 input folder. Output will be created in file called test_results.tsv in the
 output folder. Each line will contain output for each sample, columns are the
 class probabilities.
+
+一旦您训练了分类器，就可以使用--do_predict=true命令在推理模式下使用它。您需要一个名为test.tsv
+的文件在输入文件夹中。输出将在输出文件夹中创建名为test_results.tsv的文件。每一行将包含每个示例
+的输出，列是分类的概率。
 
 ```shell
 export BERT_BASE_DIR=/path/to/bert/uncased_L-12_H-768_A-12
@@ -544,9 +586,11 @@ python run_classifier.py \
   --output_dir=/tmp/mrpc_output/
 ```
 
+>### SQuAD 1.1
+
 ### SQuAD 1.1
 
-The Stanford Question Answering Dataset (SQuAD) is a popular question answering
+>The Stanford Question Answering Dataset (SQuAD) is a popular question answering
 benchmark dataset. BERT (at the time of the release) obtains state-of-the-art
 results on SQuAD with almost no task-specific network architecture modifications
 or data augmentation. However, it does require semi-complex data pre-processing
@@ -554,20 +598,35 @@ and post-processing to deal with (a) the variable-length nature of SQuAD context
 paragraphs, and (b) the character-level answer annotations which are used for
 SQuAD training. This processing is implemented and documented in `run_squad.py`.
 
-To run on SQuAD, you will first need to download the dataset. The
+斯坦福问答数据集(SQuAD)是一个流行的问答基准数据集。BERT(在发布时)几乎不需要修改特定于任务的网
+络架构或增加数据，就可以获得最先进的结果。然而，它确实需要有点复杂的数据预处理和后处理来处理(a)
+队际内容各段长度不一的性质，和(b)用于队际训练的字符级阅读理解。此处理是在`run_squad.py`中实现
+并记录。
+
+>To run on SQuAD, you will first need to download the dataset. The
 [SQuAD website](https://rajpurkar.github.io/SQuAD-explorer/) does not seem to
 link to the v1.1 datasets any longer, but the necessary files can be found here:
+
+要运行SQuAD数据集，您首先需要下载数据集。
+[SQuAD website](https://rajpurkar.github.io/squadexplorer/)
+似乎不再链接到v1.1数据集，但必要的文件可以在这里找到:
 
 *   [train-v1.1.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v1.1.json)
 *   [dev-v1.1.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v1.1.json)
 *   [evaluate-v1.1.py](https://github.com/allenai/bi-att-flow/blob/master/squad/evaluate-v1.1.py)
 
-Download these to some directory `$SQUAD_DIR`.
+>Download these to some directory `$SQUAD_DIR`.
 
-The state-of-the-art SQuAD results from the paper currently cannot be reproduced
+下载这些到某个文件夹`$SQUAD_DIR`。
+
+>The state-of-the-art SQuAD results from the paper currently cannot be reproduced
 on a 12GB-16GB GPU due to memory constraints (in fact, even batch size 1 does
 not seem to fit on a 12GB GPU using `BERT-Large`). However, a reasonably strong
 `BERT-Base` model can be trained on the GPU with these hyperparameters:
+
+由于内存的限制，目前在12GB-16GB GPU上无法复现论文中最先进的阵容结果(事实上，即使是批量大小为1的
+GPU也无法在12GB的GPU上使用`BERT-Large`)。然而，一个相当强大的`BERT-Base`模型可以在这些GPU上
+使用这些参数运行:
 
 ```shell
 python run_squad.py \
@@ -586,25 +645,34 @@ python run_squad.py \
   --output_dir=/tmp/squad_base/
 ```
 
-The dev set predictions will be saved into a file called `predictions.json` in
+>The dev set predictions will be saved into a file called `predictions.json` in
 the `output_dir`:
+
+开发集预测将保存到文件夹`output_dir`一个名为`predictions.json`的文件中:
 
 ```shell
 python $SQUAD_DIR/evaluate-v1.1.py $SQUAD_DIR/dev-v1.1.json ./squad/predictions.json
 ```
 
-Which should produce an output like this:
+>Which should produce an output like this:
+
+它应该产生这样的输出:
 
 ```shell
 {"f1": 88.41249612335034, "exact_match": 81.2488174077578}
 ```
 
-You should see a result similar to the 88.5% reported in the paper for
+>You should see a result similar to the 88.5% reported in the paper for
 `BERT-Base`.
 
-If you have access to a Cloud TPU, you can train with `BERT-Large`. Here is a
+基于`BERT-Base`您应该会看到类似于论文中报告的88.5%的结果
+
+>If you have access to a Cloud TPU, you can train with `BERT-Large`. Here is a
 set of hyperparameters (slightly different than the paper) which consistently
 obtain around 90.5%-91.0% F1 single-system trained only on SQuAD:
+
+如果您可以访问云TPU，您可以使用`BERT-Large`进行训练。这里是一组超参数(与本文略有不同)，单
+系统训练只针对SQuAD始终得到F1约90.5%-91.0%:
 
 ```shell
 python run_squad.py \
@@ -625,32 +693,47 @@ python run_squad.py \
   --tpu_name=$TPU_NAME
 ```
 
-For example, one random run with these parameters produces the following Dev
+>For example, one random run with these parameters produces the following Dev
 scores:
+
+例如，一个带有这些参数的随机运行，在Dev集会产生以下分数:
 
 ```shell
 {"f1": 90.87081895814865, "exact_match": 84.38978240302744}
 ```
 
-If you fine-tune for one epoch on
+>If you fine-tune for one epoch on
 [TriviaQA](http://nlp.cs.washington.edu/triviaqa/) before this the results will
 be even better, but you will need to convert TriviaQA into the SQuAD json
 format.
 
+如果在此之前对[TriviaQA](http://nlp.cs.washington.edu/triviaqa/)进行一个epoch的微调，结
+果会更好，但是需要将TriviaQA转换为SQuAD json格式。
+
+>### SQuAD 2.0
+
 ### SQuAD 2.0
 
-This model is also implemented and documented in `run_squad.py`.
+>This model is also implemented and documented in `run_squad.py`.
 
-To run on SQuAD 2.0, you will first need to download the dataset. The necessary
+这个模型也在`run_squad.py`中实现和记录。
+
+>To run on SQuAD 2.0, you will first need to download the dataset. The necessary
 files can be found here:
+
+要在SQuAD 2.0上运行，首先需要下载数据集。所需文件可在此找到:
 
 *   [train-v2.0.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v2.0.json)
 *   [dev-v2.0.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v2.0.json)
 *   [evaluate-v2.0.py](https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/)
 
-Download these to some directory `$SQUAD_DIR`.
+>Download these to some directory `$SQUAD_DIR`.
 
-On Cloud TPU you can run with BERT-Large as follows:
+将他们下载到某文件夹`$SQUAD_DIR`.
+
+>On Cloud TPU you can run with BERT-Large as follows:
+
+在云TPU你能够运行BERT-Large如下:
 
 ```shell
 python run_squad.py \
@@ -672,21 +755,34 @@ python run_squad.py \
   --version_2_with_negative=True
 ```
 
-We assume you have copied everything from the output directory to a local
+>We assume you have copied everything from the output directory to a local
 directory called ./squad/. The initial dev set predictions will be at
 ./squad/predictions.json and the differences between the score of no answer ("")
 and the best non-null answer for each question will be in the file
 ./squad/null_odds.json
 
-Run this script to tune a threshold for predicting null versus non-null answers:
+我们假设您已经将所有内容从输出目录复制到名为 ./squad/ 的本地目录中。最初的开发集预测将
+在 ./squad/predictions.json。每个问题的无答案("")和最佳非空答案之间的差异将
+在./squad/null_odds.json文件中
 
-python $SQUAD_DIR/evaluate-v2.0.py $SQUAD_DIR/dev-v2.0.json
-./squad/predictions.json --na-prob-file ./squad/null_odds.json
+>Run this script to tune a threshold for predicting null versus non-null answers:
 
-Assume the script outputs "best_f1_thresh" THRESH. (Typical values are between
+运行此脚本来调优预测空答案和非空答案的阈值:
+
+```shell
+python $SQUAD_DIR/evaluate-v2.0.py \
+    $SQUAD_DIR/dev-v2.0.json \ 
+    ./squad/predictions.json \
+    --na-prob-file ./squad/null_odds.json
+```
+
+>Assume the script outputs "best_f1_thresh" THRESH. (Typical values are between
 -1.0 and -5.0). You can now re-run the model to generate predictions with the
 derived threshold or alternatively you can extract the appropriate answers from
 ./squad/nbest_predictions.json.
+
+假设脚本输出"best_f1_thresh"THRESH。(典型值介于-1.0和-5.0之间)。现在，您可以重新运行模型，
+以生成带有派生阈值的预测，或者从./squad/nbest_predictions.json中提取适当的答案。
 
 ```shell
 python run_squad.py \
@@ -709,34 +805,50 @@ python run_squad.py \
   --null_score_diff_threshold=$THRESH
 ```
 
-### Out-of-memory issues
+>### Out-of-memory issues
 
-All experiments in the paper were fine-tuned on a Cloud TPU, which has 64GB of
+### 内存不足问题
+
+>All experiments in the paper were fine-tuned on a Cloud TPU, which has 64GB of
 device RAM. Therefore, when using a GPU with 12GB - 16GB of RAM, you are likely
 to encounter out-of-memory issues if you use the same hyperparameters described
 in the paper.
 
-The factors that affect memory usage are:
+本文的所有实验都在一个拥有64GB设备内存的云TPU上进行了微调。因此，当使用12GB-16GB RAM的GPU时，
+如果使用与本文描述的相同的超参数，很可能会遇到内存不足的问题。
 
-*   **`max_seq_length`**: The released models were trained with sequence lengths
+>The factors that affect memory usage are:
+>*   **`max_seq_length`**: The released models were trained with sequence lengths
     up to 512, but you can fine-tune with a shorter max sequence length to save
     substantial memory. This is controlled by the `max_seq_length` flag in our
     example code.
-
-*   **`train_batch_size`**: The memory usage is also directly proportional to
+>*   **`train_batch_size`**: The memory usage is also directly proportional to
     the batch size.
-
-*   **Model type, `BERT-Base` vs. `BERT-Large`**: The `BERT-Large` model
+>*   **Model type, `BERT-Base` vs. `BERT-Large`**: The `BERT-Large` model
     requires significantly more memory than `BERT-Base`.
-
-*   **Optimizer**: The default optimizer for BERT is Adam, which requires a lot
+>*   **Optimizer**: The default optimizer for BERT is Adam, which requires a lot
     of extra memory to store the `m` and `v` vectors. Switching to a more memory
     efficient optimizer can reduce memory usage, but can also affect the
     results. We have not experimented with other optimizers for fine-tuning.
 
-Using the default training scripts (`run_classifier.py` and `run_squad.py`), we
+影响内存使用的因素有:
+
+*   **`max_seq_length`**:发布的模型的最大序列长度达到512，但是您可以使用更短的最大序列长度进行
+    微调，以节省大量内存。这由示例代码中的`max_seq_length`标志控制。
+
+*   **`train_batch_size`**:内存使用量也与批大小成正比。
+
+*   **模型类型,`BERT-Base`对比`BERT-Large`**:`BERT-Large`模型比`BERT-Base`需要更多的内存。
+
+*   **优化器**: BERT的默认优化器是Adam，它需要大量额外的内存来存储`m`和`v`向量。切换到更高效的
+    内存优化器可以减少内存使用，但也会影响结果。我们还没有试验过其他用于微调的优化器。
+
+
+>Using the default training scripts (`run_classifier.py` and `run_squad.py`), we
 benchmarked the maximum batch size on single Titan X GPU (12GB RAM) with
 TensorFlow 1.11.0:
+
+使用默认的训练脚本(`run_classifier.py`和`run_squad.py`)，我们使用TensorFlow 1.11.0测试了单个Titan X GPU (12GB RAM)上的最大批处理大小:
 
 System       | Seq Length | Max Batch Size
 ------------ | ---------- | --------------
@@ -759,22 +871,29 @@ are working on adding code to this repository which will allow much larger
 effective batch sizes to be used on the GPU. The code will be based on one (or
 both) of the following techniques:
 
+不幸的是，这些`BERT-Large`的最大批处理大小是如此之小，以至于它们实际上会损害模型的准确性，而不管使用的学习率如何。我们正在向这个存储库添加代码，这将允许GPU上使用更大的有效批处理大小。守则将基于下列一项(或两项)技术:
+
 *   **Gradient accumulation**: The samples in a minibatch are typically
     independent with respect to gradient computation (excluding batch
     normalization, which is not used here). This means that the gradients of
     multiple smaller minibatches can be accumulated before performing the weight
     update, and this will be exactly equivalent to a single larger update.
-
+*   **梯度累积**:对于梯度计算，小型批中的样本通常是独立的(不包括这里没有使用的批标准化)。这意味着在执行权值更新之前，可以累积多个较小的小批的梯度，这与单个较大的更新完全相同。
 *   [**Gradient checkpointing**](https://github.com/openai/gradient-checkpointing):
     The major use of GPU/TPU memory during DNN training is caching the
     intermediate activations in the forward pass that are necessary for
     efficient computation in the backward pass. "Gradient checkpointing" trades
     memory for compute time by re-computing the activations in an intelligent
     way.
+*   [**梯度检查点**](https://github.com/openai/gradient-checkpointing):在DNN训练中，GPU/TPU内存的主要用途是缓存前向传递的中间激活，这对于后向传递的高效计算是必要的。“梯度检查点”通过以智能的方式重新计算激活，用内存交换计算时间。
 
 **However, this is not implemented in the current release.**
 
+**但是，这在当前版本没有实现**
+
 ## Using BERT to extract fixed feature vectors (like ELMo)
+
+##利用BERT提取固定特征向量 (与 ELMo 相似)
 
 In certain cases, rather than fine-tuning the entire pre-trained model
 end-to-end, it can be beneficial to obtained *pre-trained contextual
@@ -782,8 +901,12 @@ embeddings*, which are fixed contextual representations of each input token
 generated from the hidden layers of the pre-trained model. This should also
 mitigate most of the out-of-memory issues.
 
+在某些情况下，与其端到端微调整个预训练模型，还不如获得*预训练上下文嵌入*，这是由预训练模型的隐含层生成的每个输入词的固定上下文表示形式。这也应该可以缓解大多数内存不足的问题。
+
 As an example, we include the script `extract_features.py` which can be used
 like this:
+
+我们有`extract_features.py`脚本可以这样使用，例子如下：
 
 ```shell
 # Sentence A and Sentence B are separated by the ||| delimiter for sentence
@@ -807,18 +930,26 @@ This will create a JSON file (one line per line of input) containing the BERT
 activations from each Transformer layer specified by `layers` (-1 is the final
 hidden layer of the Transformer, etc.)
 
+这将创建一个JSON文件(每行输入一行)，其中包含由`layers`指定的每个Transformer层的BERT激活(-1是Transformer的最后一个隐藏层，等等)。
+
 Note that this script will produce very large output files (by default, around
 15kb for every input token).
+
+注意，这个脚本将生成非常大的输出文件(默认情况下，每个输入词大约产生15kb)。
 
 If you need to maintain alignment between the original and tokenized words (for
 projecting training labels), see the [Tokenization](#tokenization) section
 below.
+
+如果您需要在原始单词和标记词之间保持对齐(用于投射训练标签)，请参阅下面的[#tokenization](#tokenization)一节。
 
 **Note:** You may see a message like `Could not find trained model in model_dir:
 /tmp/tmpuB5g5c, running initialization to predict.` This message is expected, it
 just means that we are using the `init_from_checkpoint()` API rather than the
 saved model API. If you don't specify a checkpoint or specify an invalid
 checkpoint, this script will complain.
+
+**注意:**您可能会看到这样一条消息:`在model_dir:/tmp/tmpuB5g5c中找不到经过训练的模型，正在运行初始化以进行预测。`这条消息是预期的，它只是意味着我们正在使用`init_from_checkpoint()`API，而不是保存的模型API。如果没有指定检查点或指定无效的检查点，此脚本将打印出提示。
 
 ## Tokenization
 
