@@ -52,7 +52,7 @@ our results. Sosuke Kobayashi also made a
 implementation so please direct any questions towards the authors of that
 repository.
 
-来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，能够重现我们的结果。[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
+来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的断点兼容，能够重现我们的结果。[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
 
 (谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问。
 
@@ -353,7 +353,7 @@ using your own script.)**
 
 每个.zip文件包含三个项目：
 
-*   一个TensorFlow 模型checkpoint检查点文件(`bert_model.ckpt`)，包含预训练的参数(实际上是3个文件)。
+*   一个TensorFlow 模型checkpoint断点文件(`bert_model.ckpt`)，包含预训练的参数(实际上是3个文件)。
 *   一个词典文件(`vocab.txt`)，将词映射为词id。
 *   一个配置文件(`bert_config.json`)，它指定模型的超参数。
 
@@ -436,7 +436,7 @@ export BERT_BASE_DIR=gs://bert_models/2018_10_18/uncased_L-12_H-768_A-12
 and unpack it to some directory `$GLUE_DIR`. Next, download the `BERT-Base`
 checkpoint and unzip it to some directory `$BERT_BASE_DIR`.
 
-在运行此示例[这个脚本](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)之前，必须下载[GLUE data](https://gluebenchmark.com/tasks)解压到某个目录`$GLUE_DIR`。接下来，下载`BERT-Base`检查点，并将其解压缩到某个目录`$BERT_BASE_DIR`。
+在运行此示例[这个脚本](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)之前，必须下载[GLUE data](https://gluebenchmark.com/tasks)解压到某个目录`$GLUE_DIR`。接下来，下载`BERT-Base`断点，并将其解压缩到某个目录`$BERT_BASE_DIR`。
 
 >This example code fine-tunes `BERT-Base` on the Microsoft Research Paraphrase
 Corpus (MRPC) corpus, which only contains 3,600 examples and can fine-tune in a
@@ -480,7 +480,7 @@ high variance in the Dev set accuracy, even when starting from the same
 pre-training checkpoint. If you re-run multiple times (making sure to point to
 different `output_dir`), you should see results between 84% and 88%.
 
-这意味着开发集的准确率为84.55%。像MRPC这样的小集合在开发集精度上有很大的差异，即使是从相同的训练前检查点开始时也是如此。如果您多次重新运行(确保指向不同的`output_dir`)，您应该会看到84%到88%之间的结果。
+这意味着开发集的准确率为84.55%。像MRPC这样的小集合在开发集精度上有很大的差异，即使是从相同的训练前断点开始时也是如此。如果您多次重新运行(确保指向不同的`output_dir`)，您应该会看到84%到88%之间的结果。
 
 >A few other pre-trained models are implemented off-the-shelf in
 `run_classifier.py`, so it should be straightforward to follow those examples to
@@ -809,7 +809,7 @@ System       | Seq Length | Max Batch Size
 
 *   **梯度累积**:对于梯度计算，小型批中的样本通常是独立的(不包括这里没有使用的批标准化)。这意味着在执行权值更新之前，可以累积多个较小的小批的梯度，这与单个较大的更新完全相同。
 
-*   [**梯度检查点**](https://github.com/openai/gradient-checkpointing):在DNN训练中，GPU/TPU内存的主要用途是缓存前向传递的中间激活，这对于后向传递的高效计算是必要的。“梯度检查点”通过以智能的方式重新计算激活，用内存交换计算时间。
+*   [**梯度断点**](https://github.com/openai/gradient-checkpointing):在DNN训练中，GPU/TPU内存的主要用途是缓存前向传递的中间激活，这对于后向传递的高效计算是必要的。“梯度断点”通过以智能的方式重新计算激活，用内存交换计算时间。
 
 **However, this is not implemented in the current release.**
 
@@ -873,7 +873,7 @@ python extract_features.py \
  saved model API. If you don't specify a checkpoint or specify an invalid
  checkpoint, this script will complain.
 
-**注意:**您可能会看到这样一条消息:`在model_dir:/tmp/tmpuB5g5c中找不到经过训练的模型，正在运行初始化以进行预测。`这条消息是预期的，它只是意味着我们正在使用`init_from_checkpoint()`API，而不是保存的模型API。如果没有指定检查点或指定无效的检查点，此脚本将打印出提示。
+**注意:**您可能会看到这样一条消息:`在model_dir:/tmp/tmpuB5g5c中找不到经过训练的模型，正在运行初始化以进行预测。`这条消息是预期的，它只是意味着我们正在使用`init_from_checkpoint()`API，而不是保存的模型API。如果没有指定断点或指定无效的断点，此脚本将打印出提示。
 
 ## Tokenization
 
@@ -995,34 +995,44 @@ text, but if it's not possible, this mismatch is likely not a big deal.
 
 ## Pre-training with BERT
 
-We are releasing code to do "masked LM" and "next sentence prediction" on an
-arbitrary text corpus. Note that this is *not* the exact code that was used for
-the paper (the original code was written in C++, and had some additional
-complexity), but this code does generate pre-training data as described in the
-paper.
+> We are releasing code to do "masked LM" and "next sentence prediction" on an
+> arbitrary text corpus. Note that this is *not* the exact code that was used for
+> the paper (the original code was written in C++, and had some additional
+> complexity), but this code does generate pre-training data as described in the
+> paper.
 
-Here's how to run the data generation. The input is a plain text file, with one
-sentence per line. (It is important that these be actual sentences for the "next
-sentence prediction" task). Documents are delimited by empty lines. The output
-is a set of `tf.train.Example`s serialized into `TFRecord` file format.
+我们正在发布代码来对任意文本语料库执行`masked LM`和`下一个句子预测`。注意，这不是本文使用的确切代码(原始代码是用c++编写的，还有一些额外的复杂性)，但是这段代码确实生成了本文中描述的训练前数据。
 
-You can perform sentence segmentation with an off-the-shelf NLP toolkit such as
-[spaCy](https://spacy.io/). The `create_pretraining_data.py` script will
-concatenate segments until they reach the maximum sequence length to minimize
-computational waste from padding (see the script for more details). However, you
-may want to intentionally add a slight amount of noise to your input data (e.g.,
-randomly truncate 2% of input segments) to make it more robust to non-sentential
-input during fine-tuning.
+> Here's how to run the data generation. The input is a plain text file, with one
+> sentence per line. (It is important that these be actual sentences for the "next
+> sentence prediction" task). Documents are delimited by empty lines. The output
+> is a set of `tf.train.Example`s serialized into `TFRecord` file format.
 
-This script stores all of the examples for the entire input file in memory, so
-for large data files you should shard the input file and call the script
-multiple times. (You can pass in a file glob to `run_pretraining.py`, e.g.,
-`tf_examples.tf_record*`.)
+下面是如何生成运行数据。输入是一个纯文本文件，每行一个句子。(重要的是，这些是`下一个句子预测`任务的实际句子)。文档由空行分隔。输出是一组`tf.train.Example`。示例被序列化为`TFRecord`文件格式。
 
-The `max_predictions_per_seq` is the maximum number of masked LM predictions per
-sequence. You should set this to around `max_seq_length` * `masked_lm_prob` (the
-script doesn't do that automatically because the exact value needs to be passed
-to both scripts).
+> You can perform sentence segmentation with an off-the-shelf NLP toolkit such as
+> [spaCy](https://spacy.io/). The `create_pretraining_data.py` script will
+> concatenate segments until they reach the maximum sequence length to minimize
+> computational waste from padding (see the script for more details). However, you
+> may want to intentionally add a slight amount of noise to your input data (e.g.,
+> randomly truncate 2% of input segments) to make it more robust to non-sentential
+> input during fine-tuning.
+
+您可以使用现成的NLP工具包执行句子分割，比如[spaCy](https://spacy.io/)。`create_pretraining_data.py`脚本将连接段落，直到它们达到最大的序列长度，以最小化填充造成的计算浪费(有关详细信息，请参阅脚本)。然而，您可能希望有意地在输入数据中添加少量的噪声(例如，随机截断2%的输入段)，使其在微调期间对非语句输入更加健壮。
+
+> This script stores all of the examples for the entire input file in memory, so
+> for large data files you should shard the input file and call the script
+> multiple times. (You can pass in a file glob to `run_pretraining.py`, e.g.,
+> `tf_examples.tf_record*`.)
+
+这个脚本将整个输入文件的所有示例存储在内存中，因此对于大型数据文件，您应该对输入文件进行切分并多次调用脚本。(您可以将一个文件glob传递给`run_pretraining.py`，例如，`tf_examples.tf_record*`。)
+
+> The `max_predictions_per_seq` is the maximum number of masked LM predictions per
+> sequence. You should set this to around `max_seq_length` * `masked_lm_prob` (the
+> script doesn't do that automatically because the exact value needs to be passed
+> to both scripts).
+
+`max_predictions_per_seq`是每个序列的最大masked LM预测数。您应该将其设置为`max_seq_length` *`masked_lm_prob`左右(脚本不会自动这样做，因为需要将确切的值传递给两个脚本)。
 
 ```shell
 python create_pretraining_data.py \
@@ -1037,13 +1047,17 @@ python create_pretraining_data.py \
   --dupe_factor=5
 ```
 
-Here's how to run the pre-training. Do not include `init_checkpoint` if you are
-pre-training from scratch. The model configuration (including vocab size) is
-specified in `bert_config_file`. This demo code only pre-trains for a small
-number of steps (20), but in practice you will probably want to set
-`num_train_steps` to 10000 steps or more. The `max_seq_length` and
-`max_predictions_per_seq` parameters passed to `run_pretraining.py` must be the
-same as `create_pretraining_data.py`.
+> Here's how to run the pre-training. Do not include `init_checkpoint` if you are
+> pre-training from scratch. The model configuration (including vocab size) is
+> specified in `bert_config_file`. This demo code only pre-trains for a small
+> number of steps (20), but in practice you will probably want to set
+> `num_train_steps` to 10000 steps or more. The `max_seq_length` and
+> `max_predictions_per_seq` parameters passed to `run_pretraining.py` must be the
+> same as `create_pretraining_data.py`.
+
+下面是如何进行预训练。如果你是从头开始训练，不指定`init_checkpoint`即可。模型配置(包括vocab大小)在`bert_config_file`中指定。这个示例代码只对少量步骤(20)进行了预训练，但实际上您可能希望将`num_train_steps`设置为10000步或更多。传递给`run_pretraining.py`的`max_seq_length`和`max_predictions_per_seq`参数。必须与`create_pretraining_data.py`相同。
+
+
 
 ```shell
 python run_pretraining.py \
@@ -1061,7 +1075,9 @@ python run_pretraining.py \
   --learning_rate=2e-5
 ```
 
-This will produce an output like this:
+> This will produce an output like this:
+
+这将产生这样的输出:
 
 ```
 ***** Eval results *****
@@ -1077,9 +1093,15 @@ Note that since our `sample_text.txt` file is very small, this example training
 will overfit that data in only a few steps and produce unrealistically high
 accuracy numbers.
 
-### Pre-training tips and caveats
+注意，因为我们的`sample_text.txt`文件非常小，这个例子的训练将在短短几个步骤内过拟合，并产生不切实际的高准确率结果。
 
-*   **If using your own vocabulary, make sure to change `vocab_size` in
+
+
+>### Pre-training tips and caveats
+
+### 预训练提示和警告
+
+>*   **If using your own vocabulary, make sure to change `vocab_size` in
     `bert_config.json`. If you use a larger vocabulary without changing this,
     you will likely get NaNs when training on GPU or TPU due to unchecked
     out-of-bounds access.**
@@ -1112,29 +1134,47 @@ accuracy numbers.
     on a single Cloud TPU, compared to what was used in the paper. It is
     recommended to use the largest batch size that fits into TPU memory.
 
+*  **如果使用您自己的词汇表，必须在`bert_config.json`中更改`vocab_size`。如果你使用一个更大的词汇表而不改变这一点，由于未检查的越界访问，你可能会在GPU或TPU上训练得到NaNs的结果**
+*  如果您的任务有一个大型的特定领域的语料库可用(例如，“电影评论”或“科学论文”)，那么从BERT断点开始，在语料库上运行额外的预训练步骤可能是有益的。
+*  我们在论文中使用的学习率为1e-4。但是，如果您正在从现有的BERT断点开始进行额外的预训练步骤，则应该使用较小的学习率(例如，2e-5)。
+*  目前的BERT模型只使用英语，但我们确实计划在不久的将来(希望在2018年11月底之前)发布一个多语言模型，该模型已经对很多语言进行了预训练。
+*  较长的序列代价过高，因为注意力是序列长度的二次方。换句话说，一批长度为512的64个序列比一批长度为128的256个序列代价要高得多。全连接/卷积的代价是相同的，但是对于512长度的序列，注意力代价要大得多。因此，一个好的方法是预先训练90000步，序列长度为128，然后再训练10000步，序列长度为512。非常长的序列是学习位置嵌入最需要的，这样可以很快学会的。注意，这确实需要使用两次不同的`max_seq_length`值生成数据。
+*  如果您是从头开始进行预培训，请准备好预培训在计算上代价非常高，尤其是在gpu上。如果您是从头开始进行预培训，我们推荐的方法是在单个[preemptible Cloud TPU v2](https://cloud.google.com/tpu/docs/pricing)上预培训一个`BERT-Base`，大约需要两周时间，成本约为500美元(基于2018年10月的定价)。与本文中使用的方法相比，当只在单个云TPU上进行培训时，您必须缩小批处理大小。建议使用适合TPU内存的最大批处理大小。
+
+
 ### Pre-training data
 
-We will **not** be able to release the pre-processed datasets used in the paper.
+### 预训练数据
+
+>We will **not** be able to release the pre-processed datasets used in the paper.
 For Wikipedia, the recommended pre-processing is to download
 [the latest dump](https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2),
 extract the text with
 [`WikiExtractor.py`](https://github.com/attardi/wikiextractor), and then apply
 any necessary cleanup to convert it into plain text.
 
-Unfortunately the researchers who collected the
+我们**不能**发布论文中使用的预处理数据集。推荐的预处理是下载维基百科[最新的存储](https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2),提取文本使用`WikiExtractor.py`(https://github.com/attardi/wikiextractor)，然后使用任何必要的清理工作将它转换成纯文本。
+
+>Unfortunately the researchers who collected the
 [BookCorpus](http://yknzhu.wixsite.com/mbweb) no longer have it available for
 public download. The
 [Project Guttenberg Dataset](https://web.eecs.umich.edu/~lahiri/gutenberg_dataset.html)
 is a somewhat smaller (200M word) collection of older books that are public
 domain.
 
-[Common Crawl](http://commoncrawl.org/) is another very large collection of
+不幸的是，收集[BookCorpus](http://yknzhu.wixsite.com/mbweb)的研究人员不再提供公共下载。[Project Guttenberg Dataset](https://web.eecs.umich.edu/~lahiri/gutenberg_dataset.html)是一个较小的(2亿字)公共领域的旧书集合。
+
+>[Common Crawl](http://commoncrawl.org/) is another very large collection of
 text, but you will likely have to do substantial pre-processing and cleanup to
 extract a usable corpus for pre-training BERT.
 
-### Learning a new WordPiece vocabulary
+[常见的爬虫数据Common Crawl](http://commoncrawl.org/)是另一个非常大的文本集合，但是您可能必须进行大量的预处理和数据清洗，才能提取一个可用的语料库，用于BERT的预培训。
 
-This repository does not include code for *learning* a new WordPiece vocabulary.
+>### Learning a new WordPiece vocabulary
+
+### 学习一个新的词汇表
+
+>This repository does not include code for *learning* a new WordPiece vocabulary.
 The reason is that the code used in the paper was implemented in C++ with
 dependencies on Google's internal libraries. For English, it is almost always
 better to just start with our vocabulary and pre-trained models. For learning
@@ -1142,39 +1182,58 @@ vocabularies of other languages, there are a number of open source options
 available. However, keep in mind that these are not compatible with our
 `tokenization.py` library:
 
+此存储库不包含用于`学习`新单词词汇表的代码。原因是本文使用的代码是用c++实现的，依赖于谷歌的内部库。对于英语来说，从我们的词汇和预先训练的模型开始学习总是更好的。对于学习其他语言的词汇表，有许多开放源码选项可用。然而，请记住，这些与我们的`tokenization.py`并不兼容的库:
+
 *   [Google's SentencePiece library](https://github.com/google/sentencepiece)
 
 *   [tensor2tensor's WordPiece generation script](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder_build_subword.py)
 
 *   [Rico Sennrich's Byte Pair Encoding library](https://github.com/rsennrich/subword-nmt)
 
-## Using BERT in Colab
+>## Using BERT in Colab
 
-If you want to use BERT with [Colab](https://colab.research.google.com), you can
+##在Colab中使用BERT
+
+>If you want to use BERT with [Colab](https://colab.research.google.com), you can
 get started with the notebook
 "[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
-**At the time of this writing (October 31st, 2018), Colab users can access a
+
+如果您想将BERT与[Colab](https://colab.research.google.com)一起使用，可以从“[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)”开始。
+
+>**At the time of this writing (October 31st, 2018), Colab users can access a
 Cloud TPU completely for free.** Note: One per user, availability limited,
 requires a Google Cloud Platform account with storage (although storage may be
 purchased with free credit for signing up with GCP), and this capability may not
 longer be available in the future. Click on the BERT Colab that was just linked
 for more information.
 
-## FAQ
+**撰写本文时(2018年10月31日)，Colab用户可以完全免费访问云TPU。**注意:每个用户只有一个可用性有限的谷歌云平台存储帐户(尽管注册GCP时可以免费购买存储帐户)，而且这个功能将来可能不再可用。点击刚才BERT Colab链接获取更多信息。
 
-#### Is this code compatible with Cloud TPUs? What about GPUs?
+>## FAQ
 
-Yes, all of the code in this repository works out-of-the-box with CPU, GPU, and
+## 常见问题解答
+
+>#### Is this code compatible with Cloud TPUs? What about GPUs?
+
+>Yes, all of the code in this repository works out-of-the-box with CPU, GPU, and
 Cloud TPU. However, GPU training is single-GPU only.
 
-#### I am getting out-of-memory errors, what is wrong?
+####这段代码与云TPUs兼容的吗?那gpu兼容吗?
 
-See the section on [out-of-memory issues](#out-of-memory-issues) for more
+是的，这个代码库中的所有代码都可以使用CPU、GPU和云TPU解压即可用。但是，GPU训练是单GPU的。
+
+>#### I am getting out-of-memory errors, what is wrong?
+
+>See the section on [out-of-memory issues](#out-of-memory-issues) for more
 information.
 
-#### Is there a PyTorch version available?
+####为什么报“我的内存不足”错误?
 
-There is no official PyTorch implementation. However, NLP researchers from
+有关信息，请参见[内存不足问题](#out-of-memory-issues)一节信息。
+
+>#### Is there a PyTorch version available?
+
+>There is no official PyTorch implementation. However, NLP researchers from
 HuggingFace made a
 [PyTorch version of BERT available](https://github.com/huggingface/pytorch-pretrained-BERT)
 which is compatible with our pre-trained checkpoints and is able to reproduce
@@ -1182,7 +1241,11 @@ our results. We were not involved in the creation or maintenance of the PyTorch
 implementation so please direct any questions towards the authors of that
 repository.
 
-#### Is there a Chainer version available?
+####有PyTorch版本吗?
+
+没有正式的PyTorch实现。然而，来自HuggingFace的NLP研究人员制作了一个[PyTorch版本的BERT可用](https://github.com/huggingface/pytorch-pretraining-BERT)，它与我们预先训练过的断点兼容，并且能够重现我们的结果。我们没有参与实现PyTorch版本的创建或维护，所以请向该代码库的作者提出相关问题。
+
+>#### Is there a Chainer version available?
 
 There is no official Chainer implementation. However, Sosuke Kobayashi made a
 [Chainer version of BERT available](https://github.com/soskek/bert-chainer)
@@ -1191,27 +1254,50 @@ our results. We were not involved in the creation or maintenance of the Chainer
 implementation so please direct any questions towards the authors of that
 repository.
 
-#### Will models in other languages be released?
+####有Chainer版本可用吗?
 
-Yes, we plan to release a multi-lingual BERT model in the near future. We cannot
+没有正式的Chainer实现。然而，所幸(Sosuke Kobayashi)制作了一个[Chainer版本的BERT](https://github.com/soskek/bert-chainer)，它与我们预先训练过的断点兼容，并且能够重现我们的结果。我们没有参与实现PyTorch版本的创建或维护，所以请向该代码库的作者提出相关问题。
+
+
+>#### Will models in other languages be released?
+
+>Yes, we plan to release a multi-lingual BERT model in the near future. We cannot
 make promises about exactly which languages will be included, but it will likely
 be a single model which includes *most* of the languages which have a
 significantly-sized Wikipedia.
 
-#### Will models larger than `BERT-Large` be released?
+####其他语言的模型会发布吗?
 
-So far we have not attempted to train anything larger than `BERT-Large`. It is
+是的，我们计划在不久的将来发布一个多语言的BERT模型。我们不能确切地承诺哪些语言将被包括在内，但它很可能是一个单一的模型，其中包含有*大多数*语言的大型维基百科。
+
+>#### Will models larger than `BERT-Large` be released?
+
+>So far we have not attempted to train anything larger than `BERT-Large`. It is
 possible that we will release larger models if we are able to obtain significant
 improvements.
 
-#### What license is this library released under?
+####会发布比`BERT-Large`更大的版本吗?
 
-All code *and* models are released under the Apache 2.0 license. See the
+到目前为止，我们还没有尝试过训练比`BERT-Large`更大的数据。如果我们能够获得显著的改进，我们可能会发布更大的模型。
+
+>#### What license is this library released under?
+
+>All code *and* models are released under the Apache 2.0 license. See the
 `LICENSE` file for more information.
 
-#### How do I cite BERT?
+#### 这个库是根据什么许可证发布的?
 
-For now, cite [the Arxiv paper](https://arxiv.org/abs/1810.04805):
+所有代码*和*模型都是在Apache 2.0许可下发布的。有关更多信息，请参阅`LICENSE`文件。
+
+
+>#### How do I cite BERT?
+
+>For now, cite [the Arxiv paper](https://arxiv.org/abs/1810.04805):
+
+####我该怎么引用BERT呢?
+
+目前，参考 [the Arxiv paper](https://arxiv.org/abs/1810.04805):
+
 
 ```
 @article{devlin2018bert,
@@ -1224,9 +1310,15 @@ For now, cite [the Arxiv paper](https://arxiv.org/abs/1810.04805):
 
 If we submit the paper to a conference or journal, we will update the BibTeX.
 
-## Disclaimer
+如果我们将论文提交会议或报纸，我们将更新BibTeX。
 
-This is not an official Google product.
+>## Disclaimer
+
+>This is not an official Google product.
+
+##免责声明
+
+这不是一个正式的谷歌产品。
 
 ## Contact information
 
@@ -1235,3 +1327,9 @@ For help or issues using BERT, please submit a GitHub issue.
 For personal communication related to BERT, please contact Jacob Devlin
 (`jacobdevlin@google.com`), Ming-Wei Chang (`mingweichang@google.com`), or
 Kenton Lee (`kentonl@google.com`).
+
+##联系信息
+
+有关使用BERT的帮助或问题，请提交GitHub问题。
+
+用于与BERT相关的个人交流，请联系Jacob Devlin (`jacobdevlin@google.com`)、Ming-Wei Chang (`mingweichang@google.com`)或Kenton Lee (`kentonl@google.com`)。
