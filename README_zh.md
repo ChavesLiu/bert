@@ -6,9 +6,7 @@
 `run_classifier_with_tfhub.py` for an example of how to use the TF Hub module, 
 or run an example in the browser on [Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb).
 
-BERT已经被上传到 [TensorFlow Hub](https://tfhub.dev). 看
-`run_classifier_with_tfhub.py` 例如，如何使用TF Hub模块， 
-或用浏览器[Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb)上运行一个示例.
+BERT已经被上传到 [TensorFlow Hub](https://tfhub.dev). 看`run_classifier_with_tfhub.py` 例如，如何使用TF Hub模块， 或用浏览器[Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb)上运行一个示例.
 
 **\*\*\*\*\* 2018年11月23日: Un-normalized multilingual model(未规范化语言模型) + Thai(泰语) +
 Mongolian(蒙古语) \*\*\*\*\***
@@ -17,8 +15,7 @@ Mongolian(蒙古语) \*\*\*\*\***
 on the input (no lower casing, accent stripping, or Unicode normalization), and
 additionally inclues Thai and Mongolian.
 
-我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，
-此外还包括泰语和蒙古语。
+我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，此外还包括泰语和蒙古语。
 
 >**It is recommended to use this version for developing multilingual models,
 especially on languages with non-Latin alphabets.**
@@ -41,8 +38,7 @@ especially on languages with non-Latin alphabets.**
 currently 1st place on the leaderboard by 3%. See the SQuAD 2.0 section of the
 README for details.
 
-我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。
-有关详情，请参阅辩论席的小队2.0部分。
+我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。有关详情，请参阅辩论席的小队2.0部分。
 
 **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
 BERT available \*\*\*\*\***
@@ -56,11 +52,7 @@ our results. Sosuke Kobayashi also made a
 implementation so please direct any questions towards the authors of that
 repository.
 
-来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，
-能够重现我们的结果。
-[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。
-
-Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
+来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的检查点兼容，能够重现我们的结果。[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
 
 (谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问。
 
@@ -71,14 +63,11 @@ Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/ber
 
 >*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (Not recommended, use `Multilingual Cased` instead)**: 102 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
-
->*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
     Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
-    中文简体和繁体，12层，768隐藏层，12头，110M参数
 
 *   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (不推荐用 `Multilingual Cased` 加载)**: 102种语言，12层，768隐藏层，12个头，110m参数
-
 *   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
     中文简体和繁体，12层，768隐藏层，12头，110M参数
 
@@ -88,12 +77,10 @@ changes. We did update the implementation of `BasicTokenizer` in
 `tokenization.py` to support Chinese character tokenization, so please update if
 you forked it. However, we did not change the tokenization API.
 
+我们中文使用的是基于字符的标记，对所有其他语言使用单词tokenization。这两种模型都应该解压即用，无需任何代码更改。我们在`tokenization.py`中更新了`BasicTokenizer`的实现。支持中文字符化，所以如果你如果fork了请更新。但是，我们没有更改了tokenization化API。
+
 >For more, see the
 [Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).
-
-我们中文使用的是基于字符的标记，对所有其他语言使用单词tokenization。这两种模型都应该解压即用，无需任何代码更改。
-我们在`tokenization.py`中更新了`BasicTokenizer`的实现。支持中文字符化，
-所以如果你如果fork了请更新。但是，我们没有更改了tokenization化API。
 
 有关更多信息，请参见
 [多语言README](https://github.com/google-research/bert/blob/master/multilingual.md).
@@ -107,8 +94,7 @@ you forked it. However, we did not change the tokenization API.
 obtains state-of-the-art results on a wide array of Natural Language Processing
 (NLP) tasks.
 
-**BERT**, or **B**idirectional **E**ncoder **R**epresentations 来源于
-**T**ransformers, 是一种新的预训练语言表达的方法，是解决自然语言处理(NLP)任务最先进的方法。
+**BERT**, or **B**idirectional **E**ncoder **R**epresentations 来源于**T**ransformers, 是一种新的预训练语言表达的方法，是解决自然语言处理(NLP)任务最先进的方法。
 
 >Our academic paper which describes BERT in detail and provides full results on a
 number of tasks can be found here:
@@ -161,16 +147,13 @@ Wikipedia), and then use that model for downstream NLP tasks that we care about
 (like question answering). BERT outperforms previous methods because it is the
 first *unsupervised*, *deeply bidirectional* system for pre-training NLP.
 
-BERT是一种预训练的语言表达的方法，这意味着我们在一个大的文本语料库（如维基百科）上训练一个通用
-的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。BERT优于以前的方法，因为它
-是第一个*无监督*、*深度双向*的预训练NLP系统。
+BERT是一种预训练的语言表达的方法，这意味着我们在一个大的文本语料库（如维基百科）上训练一个通用的“语言理解”模型，然后将该模型用于我们关心的下游NLP任务（如问答）。BERT优于以前的方法，因为它是第一个*无监督*、*深度双向*的预训练NLP系统。
 
 >*Unsupervised* means that BERT was trained using only a plain text corpus, which
 is important because an enormous amount of plain text data is publicly available
 on the web in many languages.
 
-*无监督*意味着BERT只使用纯文本语料库进行训练，这一点很重要，因为大量纯文本数据在网络上以多种语
-言公开。
+*无监督*意味着BERT只使用纯文本语料库进行训练，这一点很重要，因为大量纯文本数据在网络上以多种语言公开。
 
 >Pre-trained representations can also either be *context-free* or *contextual*,
 and contextual representations can further be *unidirectional* or
@@ -182,12 +165,7 @@ the same representation in `bank deposit` and `river bank`. Contextual models
 instead generate a representation of each word that is based on the other words
 in the sentence.
 
-预训练的表示方法可以是*上下文无关的*或者是*上下文相关的*，上下文表示还可以是*单向的*或
-*双向的*。上下文无关的模型，例如:
-[word2vec](https://www.tensorflow.org/tutorials/representation/word2vec) 或者
-[GloVe](https://nlp.stanford.edu/projects/glove/)
-为词汇表中的每个单词生成一个单独的`word embedded`来表示，这样`bank`在`bank deposit`
-和`river bank`中将具有相同的表示。上下文模型生成基于句子中其他单词的每个单词的表示。
+预训练的表示方法可以是*上下文无关的*或者是*上下文相关的*，上下文表示还可以是*单向的*或*双向的*。上下文无关的模型，例如:[word2vec](https://www.tensorflow.org/tutorials/representation/word2vec) 或者[GloVe](https://nlp.stanford.edu/projects/glove/)为词汇表中的每个单词生成一个单独的`word embedded`来表示，这样`bank`在`bank deposit`和`river bank`中将具有相同的表示。上下文模型生成基于句子中其他单词的每个单词的表示。
 
 >BERT was built upon recent work in pre-training contextual representations —
 including [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432),
@@ -204,17 +182,7 @@ represents "bank" using both its left and right context — `I made a ... deposi
 — starting from the very bottom of a deep neural network, so it is *deeply
 bidirectional*.
 
-BERT是建立在预训练包括上下文表示
-[Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432),
-[生成预训练](https://blog.openai.com/language-unsupervised/),
-[ELMo](https://allennlp.org/elmo),
-[ULMFit](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html),
-但至关重要的是，这些模型都是“单向的”或“浅双向的”。
-这意味着每个单词只使用其左边(或右边)的单词进行上下文化。
-例如：在`I made a bank deposit`这句话中，`bank`的单向表示仅基于`I made a`，
-而不是`deposit`。以前的一些工作确实结合了来自单独的左上下文和右上下文模型的表示，
-但只是以一种`浅`的方式。BERT用`bank`的左右上下文来表示`bank`,
-`I made a ... deposit` — 从一个深度神经网络的最底部开始，所以它是`深度双向的`;
+BERT是建立在预训练包括上下文表示[半监督序列学习](https://arxiv.org/abs/1511.01432),[生成预训练](https://blog.openai.com/language-unsupervised/),[ELMo](https://allennlp.org/elmo),[ULMFit](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html),但至关重要的是，这些模型都是“单向的”或“浅双向的”。这意味着每个单词只使用其左边(或右边)的单词进行上下文化。例如：在`I made a bank deposit`这句话中，`bank`的单向表示仅基于`I made a`，而不是`deposit`。以前的一些工作确实结合了来自单独的左上下文和右上下文模型的表示，但只是以一种`浅`的方式。BERT用`bank`的左右上下文来表示`bank`,`I made a ... deposit` — 从一个深度神经网络的最底部开始，所以它是`深度双向的`;
 
 
 >BERT uses a simple approach for this: We mask out 15% of the words in the input,
@@ -222,9 +190,7 @@ run the entire sequence through a deep bidirectional
 [Transformer](https://arxiv.org/abs/1706.03762) encoder, and then predict only
 the masked words. For example:
 
-BERT用了一种简单的方法:我们屏蔽掉输入中的15%的单词，通过深层双向
-[Transformer](https://arxiv.org/abs/1706.03762)的编码器，
-然后仅仅预测屏蔽掉的词，例如：
+BERT用了一种简单的方法:我们屏蔽掉输入中的15%的单词，通过深层双向[Transformer](https://arxiv.org/abs/1706.03762)的编码器，然后仅仅预测屏蔽掉的词，例如：
 
 ```
 Input: the man went to the [MASK1] . he bought a [MASK2] of milk.
@@ -236,8 +202,7 @@ task which can be generated from any monolingual corpus: Given two sentences `A`
 and `B`, is `B` the actual next sentence that comes after `A`, or just a random
 sentence from the corpus?
 
-为了学习句子之间的关系，我们还训练了一个简单的任务，这个任务可以从任何单语语料库生成:给定两个
-句子`A`和`B`，`B`是在`A`之后的下一个句子，或是语料库中的一个随机句子?
+为了学习句子之间的关系，我们还训练了一个简单的任务，这个任务可以从任何单语语料库生成:给定两个句子`A`和`B`，`B`是在`A`之后的下一个句子，或是语料库中的一个随机句子?
 
 ```
 Sentence A: the man went to the store .
@@ -255,8 +220,7 @@ Label: NotNextSentence
 (Wikipedia + [BookCorpus](http://yknzhu.wixsite.com/mbweb)) for a long time (1M
 update steps), and that's BERT.
 
-我们用BERT在一个大的训练语料(Wikipedia + [BookCorpus](http://yknzhu.wixsite.com/mbweb))，
-训练了一个大模型(12层到24层Transformer)；花费了很长的时间（更新了一百万个迭代的参数）
+我们用BERT在一个大的训练语料(Wikipedia + [BookCorpus](http://yknzhu.wixsite.com/mbweb))，训练了一个大模型(12层到24层Transformer)；花费了很长的时间（更新了一百万个迭代的参数）
 
 >Using BERT has two stages: *Pre-training* and *fine-tuning*.
 
@@ -268,8 +232,7 @@ multilingual models will be released in the near future). We are releasing a
 number of pre-trained models from the paper which were pre-trained at Google.
 Most NLP researchers will never need to pre-train their own model from scratch.
 
-**预训练** 是相当高成本的(使用4到16个云TPU用了4天),但是对于每种语言都是一次性的过程(目前的模型只使用英语，
-但是多语言模型将在不久的将来发布)
+**预训练** 是相当高成本的(使用4到16个云TPU用了4天),但是对于每种语言都是一次性的过程(目前的模型只使用英语，但是多语言模型将在不久的将来发布)
 
 >**Fine-tuning** is inexpensive. All of the results in the paper can be
 replicated in at most 1 hour on a single Cloud TPU, or a few hours on a GPU,
@@ -277,8 +240,7 @@ starting from the exact same pre-trained model. SQuAD, for example, can be
 trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of
 91.0%, which is the single system state-of-the-art.
 
-**微调** 是成本低的方案。本文的所有结果，只需要单个云TPU运行最多1小时可以得到；从相同的预训练模型开始，
-例如，SQuAD在单个TPU进行30分钟左右的训练，使Dev F1分数可达91.0%，这是目前单系统最优的水平；
+**微调** 是成本低的方案。本文的所有结果，只需要单个云TPU运行最多1小时可以得到；从相同的预训练模型开始，例如，SQuAD在单个TPU进行30分钟左右的训练，使Dev F1分数可达91.0%，这是目前单系统最优的水平；
 
 >The other important aspect of BERT is that it can be adapted to many types of
 NLP tasks very easily. In the paper, we demonstrate state-of-the-art results on
@@ -286,29 +248,24 @@ sentence-level (e.g., SST-2), sentence-pair-level (e.g., MultiNLI), word-level
 (e.g., NER), and span-level (e.g., SQuAD) tasks with almost no task-specific
 modifications.
 
-BERT的另一个重要方面是它可以很容易地适应许多类型的NLP任务。在paper中，我们展示了在几乎没有针
-对特定任务修改的情况下，句子级(例如，SST-2)、
-句子对级(例如,自然语言推理，MultiNLI,*Multi* *N*atural *L*anguage *I*nference，
-数据：[Multi-Genre NLI Corpus](https://www.nyu.edu/projects/bowman/multinli/))、
-单词级(例如，NER实体识别)和
-Span-level(例如，SQuAD阅读理解)任务；
+BERT的另一个重要方面是它可以很容易地适应许多类型的NLP任务。在本文中，我们展示了在几乎没有特定任务修改的情况下，句子级(例如SST -2)、句子对级(例如MultiNLI)、单词级(例如NER)和span-level(例如SQuAD)任务的最新结果。
 
 >## What has been released in this repository?
 
 ## 这个存储库中发布了什么?
 
 >We are releasing the following:
->*   TensorFlow code for the BERT model architecture (which is mostly a standard
+*   TensorFlow code for the BERT model architecture (which is mostly a standard
     [Transformer](https://arxiv.org/abs/1706.03762) architecture).
->*   Pre-trained checkpoints for both the lowercase and cased version of
+*   Pre-trained checkpoints for both the lowercase and cased version of
     `BERT-Base` and `BERT-Large` from the paper.   
->*   TensorFlow code for push-button replication of the most important
+*   TensorFlow code for push-button replication of the most important
     fine-tuning experiments from the paper, including SQuAD, MultiNLI, and MRPC.
 
 我们发布了以下内容:
-* BERT模型架构的TensorFlow代码(主要是一个标准[Transformer](https://arxiv.org/abs/1706.03762)体系结构)。
-* 预训练的checkpoints的小写和大小写版本:`BERT-Base`和`BERT-Large`。
-* TensorFlow代码本文中最重要的微调实验包括SQuAD、MultiNLI和MRPC.
+*  BERT模型架构的TensorFlow代码(主要是一个标准[Transformer](https://arxiv.org/abs/1706.03762)体系结构)。
+*  预训练的checkpoints的小写和大小写版本:`BERT-Base`和`BERT-Large`。
+*  TensorFlow代码本文中最重要的微调实验包括SQuAD、MultiNLI和MRPC.
 
 >All of the code in this repository works out-of-the-box with CPU, GPU, and Cloud
 TPU.
@@ -326,10 +283,7 @@ preserved. Typically, the `Uncased` model is better unless you know that case
 information is important for your task (e.g., Named Entity Recognition or
 Part-of-Speech tagging).
 
-我们在paper中发布了`BERT-Base`和`BERT-Large`模型。`Uncased`表示在单词符号化之前文本已经小写，
-例如，`John Smith`变成了`john smith`。
-`Uncased`模型也去掉了任何口音标记。`Cased`表示保留了混合真实的大小写和重音符号
-通常，除非您知道这种情况的信息对于您的任务非常重要，否则`Uncased`模型更好，(例如，命名实体识别或词性标注)。
+我们在paper中发布了`BERT-Base`和`BERT-Large`模型。`Uncased`表示在单词符号化之前文本已经小写，例如，`John Smith`变成了`john smith`。`Uncased`模型也去掉了任何口音标记。`Cased`表示保留了混合真实的大小写和重音符号通常，除非您知道这种情况的信息对于您的任务非常重要，否则`Uncased`模型更好，(例如，命名实体识别或词性标注)。
 
 >These models are all released under the same license as the source code (Apache
 2.0).
@@ -346,8 +300,7 @@ Part-of-Speech tagging).
 scripts. (Or pass `do_lower_case=False` directly to `FullTokenizer` if you're
 using your own script.)**
 
-**使用大小写混合模型时，请确保将`——do_lower=False`传递给训练脚本。(如果使用自己的脚本，则直接
-将`do_lower_case=False`传递给`FullTokenizer`)**
+**使用大小写混合模型时，请确保将`——do_lower=False`传递给训练脚本。(如果使用自己的脚本，则直接将`do_lower_case=False`传递给`FullTokenizer`)**
 
 >The links to the models are here (right-click, 'Save link as...' on the name):
 
@@ -355,18 +308,18 @@ using your own script.)**
 
 >*   **[`BERT-Base, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip)**:
     12-layer, 768-hidden, 12-heads, 110M parameters
->*   **[`BERT-Large, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip)**:
+*   **[`BERT-Large, Uncased`](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip)**:
     24-layer, 1024-hidden, 16-heads, 340M parameters
->*   **[`BERT-Base, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip)**:
+*   **[`BERT-Base, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip)**:
     12-layer, 768-hidden, 12-heads , 110M parameters
->*   **[`BERT-Large, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-24_H-1024_A-16.zip)**:
+*   **[`BERT-Large, Cased`](https://storage.googleapis.com/bert_models/2018_10_18/cased_L-24_H-1024_A-16.zip)**:
     24-layer, 1024-hidden, 16-heads, 340M parameters
->*   **[`BERT-Base, Multilingual Cased (New, recommended)`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+*   **[`BERT-Base, Multilingual Cased (New, recommended)`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
     104 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
->*   **[`BERT-Base, Multilingual Uncased (Orig, not recommended)`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+*   **[`BERT-Base, Multilingual Uncased (Orig, not recommended)`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (Not recommended, use `Multilingual Cased` instead)**: 102 languages,
     12-layer, 768-hidden, 12-heads, 110M parameters
->*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
     Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M
 
 
@@ -392,10 +345,10 @@ using your own script.)**
     简体繁体，12层，768隐藏，12头，110M参数
 
 >Each .zip file contains three items:
->*   A TensorFlow checkpoint (`bert_model.ckpt`) containing the pre-trained
+*   A TensorFlow checkpoint (`bert_model.ckpt`) containing the pre-trained
     weights (which is actually 3 files).
->*   A vocab file (`vocab.txt`) to map WordPiece to word id.
->*   A config file (`bert_config.json`) which specifies the hyperparameters of
+*   A vocab file (`vocab.txt`) to map WordPiece to word id.
+*   A config file (`bert_config.json`) which specifies the hyperparameters of
     the model.
 
 每个.zip文件包含三个项目：
@@ -416,17 +369,13 @@ adding code to this repository which allows for much larger effective batch size
 on the GPU. See the section on [out-of-memory issues](#out-of-memory-issues) for
 more details.
 
-**重点**:本文的所有结果均在单个云TPU上进行的微调,具备64GB的内存.目前不可能再生产大部分的
-`BERT-Large`的结果，在本文中使用的GPU在12GB~16GB的内存，所以使用可以装入内存的最大的bath
-进行处理，我们正在努力将代码添加到这个代码库中，这样可以在GPU上实现更大的有效批处理大小。有
-关详情请参见[内存不足问题](#out-of-memory-issues)一节。
+**重点**:本文的所有结果均在单个云TPU上进行的微调,具备64GB的内存.目前不可能再生产大部分的`BERT-Large`的结果，在本文中使用的GPU在12GB~16GB的内存，所以使用可以装入内存的最大的bath进行处理，我们正在努力将代码添加到这个代码库中，这样可以在GPU上实现更大的有效批处理大小。有关详情请参见[内存不足问题](#out-of-memory-issues)一节。
 
 >This code was tested with TensorFlow 1.11.0. It was tested with Python2 and
 Python3 (but more thoroughly with Python2, since this is what's used internally
 in Google).
 
-这段代码是用TensorFlow 1.11.0测试的。用Python2和Python3(但是完全适配的是Python2，因为
-这是谷歌内部使用的版本)。
+这段代码是用TensorFlow 1.11.0测试的。用Python2和Python3(但是完全适配的是Python2，因为这是谷歌内部使用的版本)。
 
 >The fine-tuning examples which use `BERT-Base` should be able to run on a GPU
 that has at least 12GB of RAM using the hyperparameters given.
@@ -456,16 +405,13 @@ the following flags to `run_classifier.py` or `run_squad.py`:
 for how to use Cloud TPUs. Alternatively, you can use the Google Colab notebook
 "[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
 
-请看[Google Cloud TPU tutorial](https://cloud.google.com/tpu/docs/tutorials/mnist)
-了解如何使用云计算TPUs。或者，您可以使用谷歌Colab笔记本
-"[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
+请看[Google Cloud TPU tutorial](https://cloud.google.com/tpu/docs/tutorials/mnist)了解如何使用云计算TPUs。或者，您可以使用谷歌Colab笔记本"[BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb)".
 
 >On Cloud TPUs, the pretrained model and the output directory will need to be on
 Google Cloud Storage. For example, if you have a bucket named `some_bucket`, you
 might use the following flags instead:
 
-使用云TPUs，使用谷歌云存储预训练模型要输出文件夹参数，例如，你有一个bucket叫`some_bucket`,
-您可以使用以下标志代替:
+使用云TPUs，使用谷歌云存储预训练模型要输出文件夹参数，例如，你有一个bucket叫`some_bucket`,您可以使用以下标志代替:
 
 ```
   --output_dir=gs://some_bucket/my_output_dir/
@@ -481,8 +427,8 @@ export BERT_BASE_DIR=gs://bert_models/2018_10_18/uncased_L-12_H-768_A-12
 ```
 
 >### Sentence (and sentence-pair) classification tasks
-### 句子(和句子对)分类任务
 
+### 句子(和句子对)分类任务
 
 >Before running this example you must download the
 [GLUE data](https://gluebenchmark.com/tasks) by running
@@ -490,18 +436,13 @@ export BERT_BASE_DIR=gs://bert_models/2018_10_18/uncased_L-12_H-768_A-12
 and unpack it to some directory `$GLUE_DIR`. Next, download the `BERT-Base`
 checkpoint and unzip it to some directory `$BERT_BASE_DIR`.
 
-在运行此示例
-[这个脚本](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)
-之前，必须下载
-[GLUE data](https://gluebenchmark.com/tasks)
-解压到某个目录`$GLUE_DIR`。接下来，下载`BERT-Base`检查点，并将其解压缩到某个目录`$BERT_BASE_DIR`。
+在运行此示例[这个脚本](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e)之前，必须下载[GLUE data](https://gluebenchmark.com/tasks)解压到某个目录`$GLUE_DIR`。接下来，下载`BERT-Base`检查点，并将其解压缩到某个目录`$BERT_BASE_DIR`。
 
 >This example code fine-tunes `BERT-Base` on the Microsoft Research Paraphrase
 Corpus (MRPC) corpus, which only contains 3,600 examples and can fine-tune in a
 few minutes on most GPUs.
 
-这个示例代码基于微软研究释义语料库(Microsoft Research ase Corpus, MRPC)对`BERT-Base`进行了微调，
-该语料库只包含3600个示例，在大多数gpu上只需几分钟就可以进行微调。
+这个示例代码基于微软研究释义语料库(Microsoft Research ase Corpus, MRPC)对`BERT-Base`进行了微调，该语料库只包含3600个示例，在大多数gpu上只需几分钟就可以进行微调。
 
 ```shell
 export BERT_BASE_DIR=/path/to/bert/uncased_L-12_H-768_A-12
@@ -539,36 +480,30 @@ high variance in the Dev set accuracy, even when starting from the same
 pre-training checkpoint. If you re-run multiple times (making sure to point to
 different `output_dir`), you should see results between 84% and 88%.
 
-这意味着开发集的准确率为84.55%。像MRPC这样的小集合在开发集精度上有很大的差异，即使是从相同
-的训练前检查点开始时也是如此。如果您多次重新运行(确保指向不同的`output_dir`)，您应该会看到
-84%到88%之间的结果。
+这意味着开发集的准确率为84.55%。像MRPC这样的小集合在开发集精度上有很大的差异，即使是从相同的训练前检查点开始时也是如此。如果您多次重新运行(确保指向不同的`output_dir`)，您应该会看到84%到88%之间的结果。
 
 >A few other pre-trained models are implemented off-the-shelf in
 `run_classifier.py`, so it should be straightforward to follow those examples to
 use BERT for any single-sentence or sentence-pair classification task.
 
-在`run_classifier.py`中还实现了其他一些预先训练的模型。因此，遵循这些示例使用BERT进行任何
-单句或句子对分类任务应该是很简单的。
+在`run_classifier.py`中还实现了其他一些预先训练的模型。因此，遵循这些示例使用BERT进行任何单句或句子对分类任务应该是很简单的。
 
 >Note: You might see a message `Running train on CPU`. This really just means
 that it's running on something other than a Cloud TPU, which includes a GPU.
 
-注意:您可能会看到一条消息`正在CPU上训练`。这实际上只是意味着它运行在云TPU(包括GPU)之外的其
-他东西上。
+注意:您可能会看到一条消息`正在CPU上训练`。这实际上只是意味着它运行在云TPU(包括GPU)之外的其他东西上。
 
 >#### Prediction from classifier
 
 #### 从分类器预测
 
-Once you have trained your classifier you can use it in inference mode by using
+>Once you have trained your classifier you can use it in inference mode by using
 the --do_predict=true command. You need to have a file named test.tsv in the
 input folder. Output will be created in file called test_results.tsv in the
 output folder. Each line will contain output for each sample, columns are the
 class probabilities.
 
-一旦您训练了分类器，就可以使用--do_predict=true命令在推理模式下使用它。您需要一个名为test.tsv
-的文件在输入文件夹中。输出将在输出文件夹中创建名为test_results.tsv的文件。每一行将包含每个示例
-的输出，列是分类的概率。
+一旦您训练了分类器，就可以使用--do_predict=true命令在推理模式下使用它。您需要一个名为test.tsv的文件在输入文件夹中。输出将在输出文件夹中创建名为test_results.tsv的文件。每一行将包含每个示例的输出，列是分类的概率。
 
 ```shell
 export BERT_BASE_DIR=/path/to/bert/uncased_L-12_H-768_A-12
@@ -598,18 +533,13 @@ and post-processing to deal with (a) the variable-length nature of SQuAD context
 paragraphs, and (b) the character-level answer annotations which are used for
 SQuAD training. This processing is implemented and documented in `run_squad.py`.
 
-斯坦福问答数据集(SQuAD)是一个流行的问答基准数据集。BERT(在发布时)几乎不需要修改特定于任务的网
-络架构或增加数据，就可以获得最先进的结果。然而，它确实需要有点复杂的数据预处理和后处理来处理(a)
-队际内容各段长度不一的性质，和(b)用于队际训练的字符级阅读理解。此处理是在`run_squad.py`中实现
-并记录。
+斯坦福问答数据集(SQuAD)是一个流行的问答基准数据集。BERT(在发布时)几乎不需要修改特定于任务的网络架构或增加数据，就可以获得最先进的结果。然而，它确实需要有点复杂的数据预处理和后处理来处理(a)队际内容各段长度不一的性质，和(b)用于队际训练的字符级阅读理解。此处理是在`run_squad.py`中实现并记录。
 
 >To run on SQuAD, you will first need to download the dataset. The
 [SQuAD website](https://rajpurkar.github.io/SQuAD-explorer/) does not seem to
 link to the v1.1 datasets any longer, but the necessary files can be found here:
 
-要运行SQuAD数据集，您首先需要下载数据集。
-[SQuAD website](https://rajpurkar.github.io/squadexplorer/)
-似乎不再链接到v1.1数据集，但必要的文件可以在这里找到:
+要运行SQuAD数据集，您首先需要下载数据集。[SQuAD website](https://rajpurkar.github.io/squadexplorer/)似乎不再链接到v1.1数据集，但必要的文件可以在这里找到:
 
 *   [train-v1.1.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v1.1.json)
 *   [dev-v1.1.json](https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v1.1.json)
@@ -624,9 +554,7 @@ on a 12GB-16GB GPU due to memory constraints (in fact, even batch size 1 does
 not seem to fit on a 12GB GPU using `BERT-Large`). However, a reasonably strong
 `BERT-Base` model can be trained on the GPU with these hyperparameters:
 
-由于内存的限制，目前在12GB-16GB GPU上无法复现论文中最先进的阵容结果(事实上，即使是批量大小为1的
-GPU也无法在12GB的GPU上使用`BERT-Large`)。然而，一个相当强大的`BERT-Base`模型可以在这些GPU上
-使用这些参数运行:
+由于内存的限制，目前在12GB-16GB GPU上无法复现论文中最先进的阵容结果(事实上，即使是批量大小为1的GPU也无法在12GB的GPU上使用`BERT-Large`)。然而，一个相当强大的`BERT-Base`模型可以在这些GPU上使用这些参数运行:
 
 ```shell
 python run_squad.py \
@@ -671,8 +599,7 @@ python $SQUAD_DIR/evaluate-v1.1.py $SQUAD_DIR/dev-v1.1.json ./squad/predictions.
 set of hyperparameters (slightly different than the paper) which consistently
 obtain around 90.5%-91.0% F1 single-system trained only on SQuAD:
 
-如果您可以访问云TPU，您可以使用`BERT-Large`进行训练。这里是一组超参数(与本文略有不同)，单
-系统训练只针对SQuAD始终得到F1约90.5%-91.0%:
+如果您可以访问云TPU，您可以使用`BERT-Large`进行训练。这里是一组超参数(与本文略有不同)，单系统训练只针对SQuAD始终得到F1约90.5%-91.0%:
 
 ```shell
 python run_squad.py \
@@ -707,8 +634,7 @@ scores:
 be even better, but you will need to convert TriviaQA into the SQuAD json
 format.
 
-如果在此之前对[TriviaQA](http://nlp.cs.washington.edu/triviaqa/)进行一个epoch的微调，结
-果会更好，但是需要将TriviaQA转换为SQuAD json格式。
+如果在此之前对[TriviaQA](http://nlp.cs.washington.edu/triviaqa/)进行一个epoch的微调，结果会更好，但是需要将TriviaQA转换为SQuAD json格式。
 
 >### SQuAD 2.0
 
@@ -761,9 +687,7 @@ directory called ./squad/. The initial dev set predictions will be at
 and the best non-null answer for each question will be in the file
 ./squad/null_odds.json
 
-我们假设您已经将所有内容从输出目录复制到名为 ./squad/ 的本地目录中。最初的开发集预测将
-在 ./squad/predictions.json。每个问题的无答案("")和最佳非空答案之间的差异将
-在./squad/null_odds.json文件中
+我们假设您已经将所有内容从输出目录复制到名为 ./squad/ 的本地目录中。最初的开发集预测将在 ./squad/predictions.json。每个问题的无答案("")和最佳非空答案之间的差异将在./squad/null_odds.json文件中
 
 >Run this script to tune a threshold for predicting null versus non-null answers:
 
@@ -781,8 +705,7 @@ python $SQUAD_DIR/evaluate-v2.0.py \
 derived threshold or alternatively you can extract the appropriate answers from
 ./squad/nbest_predictions.json.
 
-假设脚本输出"best_f1_thresh"THRESH。(典型值介于-1.0和-5.0之间)。现在，您可以重新运行模型，
-以生成带有派生阈值的预测，或者从./squad/nbest_predictions.json中提取适当的答案。
+假设脚本输出"best_f1_thresh"THRESH。(典型值介于-1.0和-5.0之间)。现在，您可以重新运行模型，以生成带有派生阈值的预测，或者从./squad/nbest_predictions.json中提取适当的答案。
 
 ```shell
 python run_squad.py \
@@ -814,19 +737,18 @@ device RAM. Therefore, when using a GPU with 12GB - 16GB of RAM, you are likely
 to encounter out-of-memory issues if you use the same hyperparameters described
 in the paper.
 
-本文的所有实验都在一个拥有64GB设备内存的云TPU上进行了微调。因此，当使用12GB-16GB RAM的GPU时，
-如果使用与本文描述的相同的超参数，很可能会遇到内存不足的问题。
+本文的所有实验都在一个拥有64GB设备内存的云TPU上进行了微调。因此，当使用12GB-16GB RAM的GPU时，如果使用与本文描述的相同的超参数，很可能会遇到内存不足的问题。
 
 >The factors that affect memory usage are:
->*   **`max_seq_length`**: The released models were trained with sequence lengths
+*   **`max_seq_length`**: The released models were trained with sequence lengths
     up to 512, but you can fine-tune with a shorter max sequence length to save
     substantial memory. This is controlled by the `max_seq_length` flag in our
     example code.
->*   **`train_batch_size`**: The memory usage is also directly proportional to
+*   **`train_batch_size`**: The memory usage is also directly proportional to
     the batch size.
->*   **Model type, `BERT-Base` vs. `BERT-Large`**: The `BERT-Large` model
+*   **Model type, `BERT-Base` vs. `BERT-Large`**: The `BERT-Large` model
     requires significantly more memory than `BERT-Base`.
->*   **Optimizer**: The default optimizer for BERT is Adam, which requires a lot
+*   **Optimizer**: The default optimizer for BERT is Adam, which requires a lot
     of extra memory to store the `m` and `v` vectors. Switching to a more memory
     efficient optimizer can reduce memory usage, but can also affect the
     results. We have not experimented with other optimizers for fine-tuning.
@@ -865,26 +787,28 @@ System       | Seq Length | Max Batch Size
 ...          | 384        | 0
 ...          | 512        | 0
 
-Unfortunately, these max batch sizes for `BERT-Large` are so small that they
-will actually harm the model accuracy, regardless of the learning rate used. We
-are working on adding code to this repository which will allow much larger
-effective batch sizes to be used on the GPU. The code will be based on one (or
-both) of the following techniques:
+> Unfortunately, these max batch sizes for `BERT-Large` are so small that they
+> will actually harm the model accuracy, regardless of the learning rate used. We
+> are working on adding code to this repository which will allow much larger
+> effective batch sizes to be used on the GPU. The code will be based on one (or
+> both) of the following techniques:
 
 不幸的是，这些`BERT-Large`的最大批处理大小是如此之小，以至于它们实际上会损害模型的准确性，而不管使用的学习率如何。我们正在向这个存储库添加代码，这将允许GPU上使用更大的有效批处理大小。守则将基于下列一项(或两项)技术:
 
-*   **Gradient accumulation**: The samples in a minibatch are typically
-    independent with respect to gradient computation (excluding batch
-    normalization, which is not used here). This means that the gradients of
-    multiple smaller minibatches can be accumulated before performing the weight
-    update, and this will be exactly equivalent to a single larger update.
+>*    **Gradient accumulation**: The samples in a minibatch are typically
+     independent with respect to gradient computation (excluding batch
+     normalization, which is not used here). This means that the gradients of
+     multiple smaller minibatches can be accumulated before performing the weight
+     update, and this will be exactly equivalent to a single larger update.
+>*    [**Gradient checkpointing**](https://github.com/openai/gradient-checkpointing):
+     The major use of GPU/TPU memory during DNN training is caching the
+     intermediate activations in the forward pass that are necessary for
+     efficient computation in the backward pass. "Gradient checkpointing" trades
+     memory for compute time by re-computing the activations in an intelligent
+     way.
+
 *   **梯度累积**:对于梯度计算，小型批中的样本通常是独立的(不包括这里没有使用的批标准化)。这意味着在执行权值更新之前，可以累积多个较小的小批的梯度，这与单个较大的更新完全相同。
-*   [**Gradient checkpointing**](https://github.com/openai/gradient-checkpointing):
-    The major use of GPU/TPU memory during DNN training is caching the
-    intermediate activations in the forward pass that are necessary for
-    efficient computation in the backward pass. "Gradient checkpointing" trades
-    memory for compute time by re-computing the activations in an intelligent
-    way.
+
 *   [**梯度检查点**](https://github.com/openai/gradient-checkpointing):在DNN训练中，GPU/TPU内存的主要用途是缓存前向传递的中间激活，这对于后向传递的高效计算是必要的。“梯度检查点”通过以智能的方式重新计算激活，用内存交换计算时间。
 
 **However, this is not implemented in the current release.**
@@ -895,16 +819,16 @@ both) of the following techniques:
 
 ##利用BERT提取固定特征向量 (与 ELMo 相似)
 
-In certain cases, rather than fine-tuning the entire pre-trained model
-end-to-end, it can be beneficial to obtained *pre-trained contextual
-embeddings*, which are fixed contextual representations of each input token
-generated from the hidden layers of the pre-trained model. This should also
-mitigate most of the out-of-memory issues.
+> In certain cases, rather than fine-tuning the entire pre-trained model
+ end-to-end, it can be beneficial to obtained *pre-trained contextual
+ embeddings*, which are fixed contextual representations of each input token
+ generated from the hidden layers of the pre-trained model. This should also
+ mitigate most of the out-of-memory issues.
 
 在某些情况下，与其端到端微调整个预训练模型，还不如获得*预训练上下文嵌入*，这是由预训练模型的隐含层生成的每个输入词的固定上下文表示形式。这也应该可以缓解大多数内存不足的问题。
 
-As an example, we include the script `extract_features.py` which can be used
-like this:
+> As an example, we include the script `extract_features.py` which can be used
+> like this:
 
 我们有`extract_features.py`脚本可以这样使用，例子如下：
 
@@ -926,95 +850,110 @@ python extract_features.py \
   --batch_size=8
 ```
 
-This will create a JSON file (one line per line of input) containing the BERT
-activations from each Transformer layer specified by `layers` (-1 is the final
-hidden layer of the Transformer, etc.)
+> This will create a JSON file (one line per line of input) containing the BERT
+ activations from each Transformer layer specified by `layers` (-1 is the final
+ hidden layer of the Transformer, etc.)
 
 这将创建一个JSON文件(每行输入一行)，其中包含由`layers`指定的每个Transformer层的BERT激活(-1是Transformer的最后一个隐藏层，等等)。
 
-Note that this script will produce very large output files (by default, around
-15kb for every input token).
+> Note that this script will produce very large output files (by default, around
+ 15kb for every input token).
 
 注意，这个脚本将生成非常大的输出文件(默认情况下，每个输入词大约产生15kb)。
 
-If you need to maintain alignment between the original and tokenized words (for
-projecting training labels), see the [Tokenization](#tokenization) section
-below.
+> If you need to maintain alignment between the original and tokenized words (for
+ projecting training labels), see the [Tokenization](#tokenization) section
+ below.
 
 如果您需要在原始单词和标记词之间保持对齐(用于投射训练标签)，请参阅下面的[#tokenization](#tokenization)一节。
 
-**Note:** You may see a message like `Could not find trained model in model_dir:
-/tmp/tmpuB5g5c, running initialization to predict.` This message is expected, it
-just means that we are using the `init_from_checkpoint()` API rather than the
-saved model API. If you don't specify a checkpoint or specify an invalid
-checkpoint, this script will complain.
+> **Note:** You may see a message like `Could not find trained model in model_dir:
+ /tmp/tmpuB5g5c, running initialization to predict.` This message is expected, it
+ just means that we are using the `init_from_checkpoint()` API rather than the
+ saved model API. If you don't specify a checkpoint or specify an invalid
+ checkpoint, this script will complain.
 
 **注意:**您可能会看到这样一条消息:`在model_dir:/tmp/tmpuB5g5c中找不到经过训练的模型，正在运行初始化以进行预测。`这条消息是预期的，它只是意味着我们正在使用`init_from_checkpoint()`API，而不是保存的模型API。如果没有指定检查点或指定无效的检查点，此脚本将打印出提示。
 
 ## Tokenization
 
-For sentence-level tasks (or sentence-pair) tasks, tokenization is very simple.
-Just follow the example code in `run_classifier.py` and `extract_features.py`.
-The basic procedure for sentence-level tasks is:
+> For sentence-level tasks (or sentence-pair) tasks, tokenization is very simple.
+> Just follow the example code in `run_classifier.py` and `extract_features.py`.
+> The basic procedure for sentence-level tasks is:
+>1.  Instantiate an instance of `tokenizer = tokenization.FullTokenizer`
+>2.  Tokenize the raw text with `tokens = tokenizer.tokenize(raw_text)`.
+>3.  Truncate to the maximum sequence length. (You can use up to 512, but you
+>    probably want to use shorter if possible for memory and speed reasons.)
+>4.  Add the `[CLS]` and `[SEP]` tokens in the right place.
 
-1.  Instantiate an instance of `tokenizer = tokenization.FullTokenizer`
+对于句子级任务(或句子对任务)，标记化非常简单。只需遵循`run_classifier.py`和`extract_features.py`中的示例代码即可。句子级任务的基本步骤是:
+1.  实例化`tokenizer = tokeniz.fulltokenizer`的实例 
+2.  使用`token = tokenizer.tokenize(raw_text)`对原始文本进行标记。
+3.  截断到最大序列长度。(最多可以使用512个，但出于内存和速度的考虑，您可能希望使用更短的内存。)
+4.  在正确的位置添加`[CLS]`和`[SEP]`标记。
 
-2.  Tokenize the raw text with `tokens = tokenizer.tokenize(raw_text)`.
 
-3.  Truncate to the maximum sequence length. (You can use up to 512, but you
-    probably want to use shorter if possible for memory and speed reasons.)
+> Word-level and span-level tasks (e.g., SQuAD and NER) are more complex, since
+> you need to maintain alignment between your input text and output text so that
+> you can project your training labels. SQuAD is a particularly complex example
+> because the input labels are *character*-based, and SQuAD paragraphs are often
+> longer than our maximum sequence length. See the code in `run_squad.py` to show
+> how we handle this.
 
-4.  Add the `[CLS]` and `[SEP]` tokens in the right place.
+单词级和词下标级任务(例如，SQuAD和NER)更加复杂，因为您需要保持输入文本和输出文本之间的对齐，以便您可以投射您的训练标签。SQuAD是一个特别复杂的例子，因为输入标签是基于`字符`的，SQuAD段落通常比我们的最大序列长。参见`run_squad.py`中的代码。来展示我们是如何处理的。
 
-Word-level and span-level tasks (e.g., SQuAD and NER) are more complex, since
-you need to maintain alignment between your input text and output text so that
-you can project your training labels. SQuAD is a particularly complex example
-because the input labels are *character*-based, and SQuAD paragraphs are often
-longer than our maximum sequence length. See the code in `run_squad.py` to show
-how we handle this.
+> Before we describe the general recipe for handling word-level tasks, it's
+> important to understand what exactly our tokenizer is doing. It has three main
+> steps:
 
-Before we describe the general recipe for handling word-level tasks, it's
-important to understand what exactly our tokenizer is doing. It has three main
-steps:
+在我们描述处理单词级任务的一般方法之前，理解我们的记号赋予器究竟在做什么是很重要的。它有三个主要步骤:
 
-1.  **Text normalization**: Convert all whitespace characters to spaces, and
+>1.  **Text normalization**: Convert all whitespace characters to spaces, and
     (for the `Uncased` model) lowercase the input and strip out accent markers.
     E.g., `John Johanson's, → john johanson's,`.
-
 2.  **Punctuation splitting**: Split *all* punctuation characters on both sides
     (i.e., add whitespace around all punctuation characters). Punctuation
     characters are defined as (a) Anything with a `P*` Unicode class, (b) any
     non-letter/number/space ASCII character (e.g., characters like `$` which are
     technically not punctuation). E.g., `john johanson's, → john johanson ' s ,`
-
 3.  **WordPiece tokenization**: Apply whitespace tokenization to the output of
-    the above procedure, and apply
-    [WordPiece](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder.py)
+    the above procedure, and apply[WordPiece](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder.py)
     tokenization to each token separately. (Our implementation is directly based
     on the one from `tensor2tensor`, which is linked). E.g., `john johanson ' s
     , → john johan ##son ' s ,`
 
-The advantage of this scheme is that it is "compatible" with most existing
+1.  **文本规范化**:将所有空白字符转换为空格，并(对于`Uncased`模型)小写输入，去掉重音符号。例如:`John Johanson's, → john johanson's,`。
+2.  **标点符号分裂**:将*所有*标点符号两遍加分隔符(即，在所有标点符号周围加空格)。标点符号被定义为(a)任何带有`P*`Unicode类的字符，(b)任何非字母/数字/空格ASCII字符(例如，像`$`这样的字符在技术上不是标点符号)。例如:`john johanson's, → john johanson ' s ,`
+3.  **词块的标记**:对上述过程的输出应用空格tokenization，并分别对每个令牌应用[WordPiece](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/text_encoder.py) tokenization。(我们的实现直接基于`tensor2tensor`中的一个，链接如上)。例john johanson ' s    , → john johan ##son ' s ,`
+
+>The advantage of this scheme is that it is "compatible" with most existing
 English tokenizers. For example, imagine that you have a part-of-speech tagging
 task which looks like this:
+
+该方案的优点是它与大多数现有的英语分词器`兼容`。例如，假设您有一个词性标注任务，如下所示:
 
 ```
 Input:  John Johanson 's   house
 Labels: NNP  NNP      POS NN
 ```
 
-The tokenized output will look like this:
+>The tokenized output will look like this:
+
+标记输出将如下所示:
 
 ```
 Tokens: john johan ##son ' s house
 ```
 
-Crucially, this would be the same output as if the raw text were `John
-Johanson's house` (with no space before the `'s`).
+>Crucially, this would be the same output as if the raw text were `John Johanson's house` (with no space before the `'s`).
 
-If you have a pre-tokenized representation with word-level annotations, you can
+关键是，这将是相同的输出，就像原始文本是`John Johanson's house`(没有空格前的`'S`)。
+
+>If you have a pre-tokenized representation with word-level annotations, you can
 simply tokenize each input word independently, and deterministically maintain an
 original-to-tokenized alignment:
+
+如果您有一个带有单词级注释的标记化表示，您可以简单地对每个输入单词进行单独的标记，并确定地保持原始到标记的对齐:
 
 ```python
 ### Input
@@ -1033,22 +972,26 @@ tokenizer = tokenization.FullTokenizer(
 
 bert_tokens.append("[CLS]")
 for orig_token in orig_tokens:
-  orig_to_tok_map.append(len(bert_tokens))
-  bert_tokens.extend(tokenizer.tokenize(orig_token))
+    orig_to_tok_map.append(len(bert_tokens))
+    bert_tokens.extend(tokenizer.tokenize(orig_token))
 bert_tokens.append("[SEP]")
 
 # bert_tokens == ["[CLS]", "john", "johan", "##son", "'", "s", "house", "[SEP]"]
 # orig_to_tok_map == [1, 2, 4, 6]
 ```
 
-Now `orig_to_tok_map` can be used to project `labels` to the tokenized
+>Now `orig_to_tok_map` can be used to project `labels` to the tokenized
 representation.
 
-There are common English tokenization schemes which will cause a slight mismatch
+现在`orig_to_tok_map`可以使用`labels`去标记化的表示。
+
+>There are common English tokenization schemes which will cause a slight mismatch
 between how BERT was pre-trained. For example, if your input tokenization splits
 off contractions like `do n't`, this will cause a mismatch. If it is possible to
 do so, you should pre-process your data to convert these back to raw-looking
 text, but if it's not possible, this mismatch is likely not a big deal.
+
+有一些常见的英语标记化方案会在BERT的预训练方式之间造成轻微的不匹配。例如，如果您的输入标记化将“do n't”之类的缩写分开，这将导致不匹配。如果可以做到这一点，您应该对数据进行预处理，将其转换回原始文本，但是如果不可能，这种不匹配可能不是什么大问题。
 
 ## Pre-training with BERT
 
