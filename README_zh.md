@@ -377,7 +377,7 @@ adding code to this repository which allows for much larger effective batch size
 on the GPU. See the section on [out-of-memory issues](#out-of-memory-issues) for
 more details.
 
-**重点**:本文的所有结果均在单个云TPU上进行的微调,具备64GB的内存.目前不可能再生产大部分的`BERT-Large`的结果，在本文中使用的GPU在12GB~16GB的内存，所以使用可以装入内存的最大的bath进行处理，我们正在努力将代码添加到这个代码库中，这样可以在GPU上实现更大的有效批处理大小。有关详情请参见[内存不足问题](#out-of-memory-issues)一节。
+**重点**:本文的所有结果均在单个云TPU上进行的微调,具备64GB的内存.目前不可能再生产大部分的`BERT-Large`的结果，在本文中使用的GPU在12GB~16GB的内存，所以使用可以装入内存的最大的bath进行处理，我们正在努力将代码添加到这个代码库中，这样可以在GPU上实现更大的有效批处理大小。有关详情请参见[内存不足问题](#内存不足问题)一节。
 
 >This code was tested with TensorFlow 1.11.0. It was tested with Python2 and
 Python3 (but more thoroughly with Python2, since this is what's used internally
@@ -1237,7 +1237,7 @@ information.
 
 ####为什么报“我的内存不足”错误?
 
-有关信息，请参见[内存不足问题](#out-of-memory-issues)一节信息。
+有关信息，请参见[内存不足问题](#内存不足问题)一节信息。
 
 >#### Is there a PyTorch version available?
 
