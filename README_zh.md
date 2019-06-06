@@ -1030,6 +1030,7 @@ original-to-tokenized alignment:
 
 ```python
 ### Input
+import tokenization
 orig_tokens = ["John", "Johanson", "'s",  "house"]
 labels      = ["NNP",  "NNP",      "POS", "NN"]
 
