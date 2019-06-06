@@ -15,7 +15,7 @@ Mongolian(蒙古语) \*\*\*\*\***
 on the input (no lower casing, accent stripping, or Unicode normalization), and
 additionally inclues Thai and Mongolian.
 
-我们上传了一个新的多语言模型，它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，此外还包括泰语和蒙古语。
+我们上传了一个新的多语言模型， 它“不”对输入执行任何标准化(没有小写、重音剥离或Unicode规范化)，此外还包括泰语和蒙古语。
 
 >**It is recommended to use this version for developing multilingual models,
 especially on languages with non-Latin alphabets.**
@@ -40,9 +40,8 @@ README for details.
 
 我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。有关详情，请参阅辩论席的小队2.0部分。
 
-**\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
-BERT available \*\*\*\*\***
-
+> **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
+> BERT available \*\*\*\*\***
 >NLP researchers from HuggingFace made a
 [PyTorch version of BERT available](https://github.com/huggingface/pytorch-pretrained-BERT)
 which is compatible with our pre-trained checkpoints and is able to reproduce
@@ -52,19 +51,23 @@ our results. Sosuke Kobayashi also made a
 implementation so please direct any questions towards the authors of that
 repository.
 
+ **\*\*\*\*\*2018年11月5日:第三方PyTorch和Chainer版本的BERT可用\*\*\*\*\***
+
 来自HuggingFace的NLP研究人员制作了一个PyTorch版本的BERT，它与我们预训练过的断点兼容，能够重现我们的结果。[可用BERT的PyTorch版本](https://github.com/huggingface/pytorch-pretrained-BERT)。Sosuke Kobayashi做的[可用BERT的Chainer版本](https://github.com/soskek/bert-chainer)。
 
 (谢谢!)我们没有参与PyTorch的创建或维护实现，请直接向作者提问。
 
-**\*\*\*\*\* New November 3rd, 2018: Multilingual and Chinese models available
-\*\*\*\*\***
+> **\*\*\*\*\* New November 3rd, 2018: Multilingual and Chinese models available
+> \*\*\*\*\***
+>
+> *   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
+> (Not recommended, use `Multilingual Cased` instead)**: 102 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
+> *   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
+> Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
+
+**\*\*\*\*\*2018年11月3日，多语种中文车型上市\*\*\*\*\***
 
 我们提供了两个BERT模型:
-
->*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
-    (Not recommended, use `Multilingual Cased` instead)**: 102 languages, 12-layer, 768-hidden, 12-heads, 110M parameters
-*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:
-    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110Mparameters
 
 *   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)
     (不推荐用 `Multilingual Cased` 加载)**: 102种语言，12层，768隐藏层，12个头，110m参数
@@ -105,15 +108,21 @@ number of tasks can be found here:
 >To give a few numbers, here are the results on the
 [SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/) question answering
 task:
-
-下面是关于[SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/)的问答任务的一些数字结果:
-
-SQuAD v1.1 Leaderboard (Oct 8th 2018) | Test EM  | Test F1
+>SQuAD v1.1 Leaderboard (Oct 8th 2018) | Test EM  | Test F1
 ------------------------------------- | :------: | :------:
 1st Place Ensemble - BERT             | **87.4** | **93.2**
 2nd Place Ensemble - nlnet            | 86.0     | 91.7
 1st Place Single Model - BERT         | **85.1** | **91.8**
 2nd Place Single Model - nlnet        | 83.5     | 90.1
+
+下面是关于[SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/)的问答任务的一些数字结果:
+SQuAD v1.1 排行榜(2018年10月8日) | Test EM  | Test F1
+------------------------------------- | :------: | :------:
+第一名组合模型 - BERT             | **87.4** | **93.2**
+第二名组合模型 - nlnet            | 86.0     | 91.7
+第一名单一模型 - BERT         | **85.1** | **91.8**
+第二名单一模型 - nlnet        | 83.5     | 90.1
+
 
 以及一些自然语言推理任务:
 
@@ -183,7 +192,6 @@ represents "bank" using both its left and right context — `I made a ... deposi
 bidirectional*.
 
 BERT是建立在预训练包括上下文表示[半监督序列学习](https://arxiv.org/abs/1511.01432),[生成预训练](https://blog.openai.com/language-unsupervised/),[ELMo](https://allennlp.org/elmo),[ULMFit](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html),但至关重要的是，这些模型都是“单向的”或“浅双向的”。这意味着每个单词只使用其左边(或右边)的单词进行上下文化。例如：在`I made a bank deposit`这句话中，`bank`的单向表示仅基于`I made a`，而不是`deposit`。以前的一些工作确实结合了来自单独的左上下文和右上下文模型的表示，但只是以一种`浅`的方式。BERT用`bank`的左右上下文来表示`bank`,`I made a ... deposit` — 从一个深度神经网络的最底部开始，所以它是`深度双向的`;
-
 
 >BERT uses a simple approach for this: We mask out 15% of the words in the input,
 run the entire sequence through a deep bidirectional
