@@ -38,7 +38,7 @@ especially on languages with non-Latin alphabets.**
 currently 1st place on the leaderboard by 3%. See the SQuAD 2.0 section of the
 README for details.
 
-我们发布了代码修改，重现了83%的F1阵容2.0系统，目前在积分榜上以3%的优势排名第一。有关详情，请参阅辩论席的小队2.0部分。
+我们发布了代码修改，重现了SQuAD2.0系统83%的F1，目前在积分榜上以3%的优势排名第一。有关详情，请参阅辩论席的SQuAD2.0部分。
 
 > **\*\*\*\*\* New November 5th, 2018: Third-party PyTorch and Chainer versions of
 > BERT available \*\*\*\*\***
