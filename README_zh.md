@@ -1,5 +1,70 @@
 # BERT
 
+>**\*\*\*\*\* New May 31st, 2019: Whole Word Masking Models \*\*\*\*\***
+
+**\*\*\*\*\* 2019年5月31日:全字掩蔽模型 \*\*\*\*\***
+
+This is a release of several new models which were the result of an improvement
+the pre-processing code.
+
+这是几个新模型的版本，它们是预处理代码改进的结果。
+
+In the original pre-processing code, we randomly select WordPiece tokens to
+mask. For example:
+
+在原始的预处理代码中，我们随机选择要屏蔽的字元标记。例如:
+
+>`Input Text: the man jumped up , put his basket on phil ##am ##mon ' s head`
+`Original Masked Input: [MASK] man [MASK] up , put his [MASK] on phil
+[MASK] ##mon ' s head`
+
+`输入文本: the man jumped up , put his basket on phil ##am ##mon ' s head`
+`原来遮掩的输入: [MASK] man [MASK] up , put his [MASK] on phil [MASK] ##mon ' s head`
+
+The new technique is called Whole Word Masking. In this case, we always mask
+*all* of the the tokens corresponding to a word at once. The overall masking
+rate remains the same.
+
+这种新技术被称为全字屏蔽。在本例中，我们总是同时屏蔽*所有*对应于一个单词。总掩蔽率保持不变。
+
+>`Whole Word Masked Input: the man [MASK] up , put his basket on [MASK] [MASK]
+[MASK] ' s head`
+
+`全字掩盖的输入: the man [MASK] up , put his basket on [MASK] [MASK]
+[MASK] ' s head`
+
+>The training is identical -- we still predict each masked WordPiece token
+independently. The improvement comes from the fact that the original prediction
+task was too 'easy' for words that had been split into multiple WordPieces.
+
+训练是相同的——我们仍然独立地预测每个蒙面单词标记。改进的原因在于，原来的任务对于被分成多个单词的单词预测来说太“简单”了。
+
+>This can be enabled during data generation by passing the flag
+`--do_whole_word_mask=True` to `create_pretraining_data.py`.
+
+这可以通过向`create_pretraining_data.py`传递参数`--do_whole_word_mask=True`在数据生成期间启用。 
+
+>Pre-trained models with Whole Word Masking are linked below. The data and
+training were otherwise identical, and the models have identical structure and
+vocab to the original models. We only include BERT-Large models. When using
+these models, please make it clear in the paper that you are using the Whole
+Word Masking variant of BERT-Large.
+
+全字掩蔽的预先训练模型见下面链接。除此之外，数据和训练是相同的，模型的结构和词汇量也与原始模型相同。我们只包括BERT-Large。当使用这些模型时，请在论文中明确指出，您使用的是全字屏蔽变体的BERT-Large。
+
+*   **[`BERT-Large, Uncased (Whole Word Masking)`](https://storage.googleapis.com/bert_models/2019_05_30/wwm_uncased_L-24_H-1024_A-16.zip)**:
+    24-layer, 1024-hidden, 16-heads, 340M parameters
+
+*   **[`BERT-Large, Cased (Whole Word Masking)`](https://storage.googleapis.com/bert_models/2019_05_30/wwm_cased_L-24_H-1024_A-16.zip)**:
+    24-layer, 1024-hidden, 16-heads, 340M parameters
+
+Model                                    | SQUAD 1.1 F1/EM | Multi NLI Accuracy
+---------------------------------------- | :-------------: | :----------------:
+BERT-Large, Uncased (Original)           | 91.0/84.3       | 86.05
+BERT-Large, Uncased (Whole Word Masking) | 92.8/86.7       | 87.07
+BERT-Large, Cased (Original)             | 91.5/84.8       | 86.09
+BERT-Large, Cased (Whole Word Masking)   | 92.9/86.7       | 86.46
+
 **\*\*\*\*\* 2019年2月7日:TfHub模块 \*\*\*\*\***
 
 >BERT has been uploaded to [TensorFlow Hub](https://tfhub.dev). See
