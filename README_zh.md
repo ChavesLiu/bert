@@ -466,7 +466,7 @@ on your local machine, using a GPU like a Titan X or GTX 1080.
 >However, if you have access to a Cloud TPU that you want to train on, just add
 the following flags to `run_classifier.py` or `run_squad.py`:
 
-但是，如果您想要训练他，使用云TPU，只需将以下参数添加到`run_classifier.py`或`run_squad.py`;
+但是，如果您想要使用云TPU训练他，只需将以下参数添加到`run_classifier.py`或`run_squad.py`;
 
 ```
   --use_tpu=True \
@@ -938,7 +938,7 @@ python extract_features.py \
  projecting training labels), see the [Tokenization](#tokenization) section
  below.
 
-如果您需要在原始单词和标记词之间保持对齐(用于投射训练标签)，请参阅下面的[#tokenization](#tokenization)一节。
+如果您需要在原始单词和标记词之间保持对齐(用于投射训练标签)，请参阅下面的[#标识化](#标识化)一节。
 
 > **Note:** You may see a message like `Could not find trained model in model_dir:
  /tmp/tmpuB5g5c, running initialization to predict.` This message is expected, it
@@ -948,7 +948,9 @@ python extract_features.py \
 
 **注意:**您可能会看到这样一条消息:`在model_dir:/tmp/tmpuB5g5c中找不到经过训练的模型，正在运行初始化以进行预测。`这条消息是预期的，它只是意味着我们正在使用`init_from_checkpoint()`API，而不是保存的模型API。如果没有指定断点或指定无效的断点，此脚本将打印出提示。
 
-## Tokenization
+>## Tokenization
+
+## 标识化
 
 > For sentence-level tasks (or sentence-pair) tasks, tokenization is very simple.
 > Just follow the example code in `run_classifier.py` and `extract_features.py`.
