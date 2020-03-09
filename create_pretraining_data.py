@@ -23,7 +23,7 @@ import random
 import tokenization
 import tensorflow as tf
 
-flags = tf.flags
+flags = tf.app.flags
 
 FLAGS = flags.FLAGS
 
@@ -467,3 +467,4 @@ if __name__ == "__main__":
   flags.mark_flag_as_required("output_file")
   flags.mark_flag_as_required("vocab_file")
   tf.app.run()
+  # --input_file sample_text.txt --vocab_file vocab.txt --output_file sample_text.out2.txt
